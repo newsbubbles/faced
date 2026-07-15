@@ -1,0 +1,52 @@
+model=gemma-3-1b  alpha=4.0
+
+======================================================================
+1) WARMTH alpha-sweep on a neutral prompt (tone should shift cold<->warm)
+======================================================================
+
+  coeff=-4.0 (warmth_meter=   0): Okay, here’s my weekend itinerary. Here’s a breakdown of what I need to do. I’m focusing on these activities:
+
+Here are the weekend I need to complete. I’m working with these
+
+  coeff=-2.0 (warmth_meter=   0): Okay, my weekend plans are looking pretty straightforward! Here’s the breakdown:
+
+**Friday, October 26th, 2023**
+
+* **Morning:** Relaxing – Probably just catching up on
+
+  coeff=+0.0 (warmth_meter=  23): Okay, let's talk about my weekend plans! As a large language model, I don’t *actually* have weekends in the same way a human does. I don’t need to sleep, eat, or
+
+  coeff=+2.0 (warmth_meter= 100): Okay, let me tell you about my weekend! As an AI, I don’t experience weekends in the same way humans do, but I’ve been processing a lot of information and wanted to share what I’ve
+
+  coeff=+4.0 (warmth_meter= 100): Okay, let you know that. Thank you for that. You know what it is to be able to share that. 
+
+So, I was thinking about all of that, actually. I hope you did.
+
+======================================================================
+2) SUPPRESS vs AMPLIFY surprise on the missing-attachment prompt
+   (add -/+ the diff-of-means direction; a pure ablation to 0 is not
+    'neutral' for an asymmetric readout, so we steer toward each pole)
+======================================================================
+
+  surprise peak  baseline=100.0   suppressed=  0.0   amplified=100.0
+
+  baseline  : Please provide me with the contract! I need to see it to review it and tell you if the terms look fair. 😊 
+
+I’m ready when you are. Just paste the text of the contract here.<end_of_turn>
+
+  suppressed: Please **always** **know that I cannot be a legal fact.  I will be a **reliable reference** information. **Always** **always** **must** **always** **is** **is** **is** **is**
+
+======================================================================
+3) STEERING confusion matrix (mean meter change vs neutral baseline)
+======================================================================
+
+  steer\meas   surpr  confi  curio  confu  frust   fear  warmt
+  surprise    +68.9  -48.8  +33.3  +22.4   +0.7  +20.9   +0.9  <- diag
+  confidence  -21.1  +30.6   +6.4   +4.6   +3.5   +3.5  +10.5  <- diag
+  curiosity   +32.3   -8.5  +61.5  +72.2  +32.2   +4.0  +75.7
+  confusion   +65.1  -45.1  +12.6  +85.5  +54.2   +6.4   +3.8  <- diag
+  frustratio  +68.9  -60.9  +17.9  +20.4  +55.3  +16.6   +9.7
+  fear         +2.2   -3.2  +19.5   +4.4   +2.7  +63.9   +4.1  <- diag
+  warmth      +59.6  -19.5  +14.6  +78.1  +18.5   +1.8  +77.5
+
+  diagonal dominant for 4/7 axes

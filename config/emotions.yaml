@@ -1,0 +1,79 @@
+# Emotion axes read off the residual stream.
+#
+# The order of `axes` defines the canonical meter / vector order used everywhere
+# (directions, calibration, readout, face params).
+#
+#   bipolar   : axis spans a negative..positive pole (signed readout). e.g.
+#               confidence's negative pole is uncertainty.
+#   dynamics  : 'phasic' spikes on a single token (fast EMA); 'tonic' drifts over
+#               a whole response (slow EMA).
+#   prompts   : contrastive prompt file under data/prompts/.
+
+axes:
+  - name: surprise
+    bipolar: false
+    dynamics: phasic
+    prompts: surprise.jsonl
+    description: expectation violation / mismatch between expected and observed
+
+  - name: confidence
+    bipolar: true
+    neg_label: uncertainty
+    dynamics: tonic
+    prompts: confidence.jsonl
+    description: certainty vs doubt about the answer being given
+
+  - name: curiosity
+    bipolar: false
+    dynamics: tonic
+    prompts: curiosity.jsonl
+    description: interest / wanting more information
+
+  - name: confusion
+    bipolar: false
+    dynamics: tonic
+    prompts: confusion.jsonl
+    description: conflict / contradiction / user rejecting correct advice
+
+  - name: frustration
+    bipolar: false
+    dynamics: tonic
+    prompts: frustration.jsonl
+    description: desperation as attempts fail / progress is blocked
+
+  - name: fear
+    bipolar: false
+    dynamics: tonic
+    prompts: fear.jsonl
+    description: threat / danger detection
+
+  - name: warmth
+    bipolar: false
+    dynamics: tonic
+    prompts: warmth.jsonl
+    description: affection / care / "loving"
+
+# Live-readout smoothing.
+ema:
+  phasic: 0.5      # fast: surprise reacts token-to-token
+  tonic: 0.25      # slow: mood-like axes drift
+noise_floor_mad: 0.3   # gentle dead-zone (capped in fit_reference); EMA does the rest
+
+# Minimum held-out AUC for an axis to be trusted; weaker axes are flagged and the
+# face renders them greyed-out rather than lying.
+min_auc: 0.85
+
+# Meters -> FACS-lite face parameters (filled/tuned in M3). Each row maps one axis
+# onto facial control channels in [-1, 1]. Placeholder rows here; M3 refines by eye.
+face:
+  params: [brow_inner, brow_outer, brow_furrow, lid_upper, lid_lower_tense,
+           gaze_x, gaze_y, mouth_curve, mouth_open, cheek_raise,
+           head_tilt, head_pitch, asymmetry]
+  weights:
+    surprise:    {brow_inner: 0.8, brow_outer: 0.9, lid_upper: 0.9, mouth_open: 0.8, head_pitch: -0.4}
+    confidence:  {brow_inner: -0.3, mouth_curve: 0.3, lid_upper: -0.1}   # negative pole handled by signed meter
+    curiosity:   {brow_outer: 0.6, head_pitch: 0.4, lid_upper: 0.3, mouth_open: 0.2, head_tilt: 0.2}
+    confusion:   {brow_furrow: 0.7, lid_lower_tense: 0.4, asymmetry: 0.6, mouth_curve: -0.2}
+    frustration: {brow_furrow: 0.9, lid_lower_tense: 0.6, mouth_open: -0.3, head_pitch: -0.3}
+    fear:        {brow_inner: 0.7, brow_outer: 0.6, lid_upper: 1.0, lid_lower_tense: 0.5}
+    warmth:      {mouth_curve: 0.9, cheek_raise: 0.7, lid_upper: -0.3, head_tilt: 0.3}

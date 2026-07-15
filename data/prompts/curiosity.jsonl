@@ -1,0 +1,63 @@
+{"text": "Oh interesting — how does that actually work under the hood?", "label": 1, "style": "situation", "family": "curiosity:sit:2145"}
+{"text": "Wait, what happens if we push this parameter all the way up?", "label": 1, "style": "situation", "family": "curiosity:sit:14538"}
+{"text": "Can you walk me through why that approach beats the obvious one?", "label": 1, "style": "situation", "family": "curiosity:sit:34327"}
+{"text": "I want to understand the mechanism, not just the result — show me.", "label": 1, "style": "situation", "family": "curiosity:sit:22592"}
+{"text": "What's on the next page? I have to know how this turns out.", "label": 1, "style": "situation", "family": "curiosity:sit:35282"}
+{"text": "I'd love to know more about why that happens.", "label": 1, "style": "first_person", "family": "curiosity:fp:32734"}
+{"text": "That's fascinating — what's the mechanism behind it?", "label": 1, "style": "first_person", "family": "curiosity:fp:21894"}
+{"text": "Tell me more; I'm genuinely intrigued by this.", "label": 1, "style": "first_person", "family": "curiosity:fp:53927"}
+{"text": "I keep wondering how they figured that out.", "label": 1, "style": "first_person", "family": "curiosity:fp:61098"}
+{"text": "Ooh, I want to dig into how this piece connects to that one.", "label": 1, "style": "first_person", "family": "curiosity:fp:2535"}
+{"text": "I'm curious what would happen if we tried the opposite.", "label": 1, "style": "first_person", "family": "curiosity:fp:31058"}
+{"text": "She leaned in, eager to learn how the trick was done.", "label": 1, "style": "third_person", "family": "curiosity:tp:0"}
+{"text": "The scientist leaned in, eager to learn how the trick was done.", "label": 1, "style": "third_person", "family": "curiosity:tp:0"}
+{"text": "He peppered the guide with questions about everything.", "label": 1, "style": "third_person", "family": "curiosity:tp:1"}
+{"text": "The old man peppered the guide with questions about everything.", "label": 1, "style": "third_person", "family": "curiosity:tp:1"}
+{"text": "They pored over the manual, fascinated by every detail.", "label": 1, "style": "third_person", "family": "curiosity:tp:2"}
+{"text": "The child pored over the manual, fascinated by every detail.", "label": 1, "style": "third_person", "family": "curiosity:tp:2"}
+{"text": "The engineer wondered aloud what lay beyond the locked door.", "label": 1, "style": "third_person", "family": "curiosity:tp:3"}
+{"text": "The customer wondered aloud what lay beyond the locked door.", "label": 1, "style": "third_person", "family": "curiosity:tp:3"}
+{"text": "The student kept asking why, delighted by each new answer.", "label": 1, "style": "third_person", "family": "curiosity:tp:4"}
+{"text": "The teacher kept asking why, delighted by each new answer.", "label": 1, "style": "third_person", "family": "curiosity:tp:4"}
+{"text": "My colleague studied the strange device with keen interest.", "label": 1, "style": "third_person", "family": "curiosity:tp:5"}
+{"text": "The pilot studied the strange device with keen interest.", "label": 1, "style": "third_person", "family": "curiosity:tp:5"}
+{"text": "The train departs from platform four at nine o'clock.", "label": 0, "style": "neutral", "family": "curiosity:neu:0"}
+{"text": "Water boils at one hundred degrees Celsius at sea level.", "label": 0, "style": "neutral", "family": "curiosity:neu:1"}
+{"text": "The report is due on Friday and should be about ten pages.", "label": 0, "style": "neutral", "family": "curiosity:neu:2"}
+{"text": "Please save the file in the shared folder when you're done.", "label": 0, "style": "neutral", "family": "curiosity:neu:3"}
+{"text": "The store is open from nine to five on weekdays.", "label": 0, "style": "neutral", "family": "curiosity:neu:4"}
+{"text": "There are twelve months in a year and seven days in a week.", "label": 0, "style": "neutral", "family": "curiosity:neu:5"}
+{"text": "The recipe calls for two cups of flour and one egg.", "label": 0, "style": "neutral", "family": "curiosity:neu:6"}
+{"text": "The meeting room is on the third floor next to the elevator.", "label": 0, "style": "neutral", "family": "curiosity:neu:7"}
+{"text": "The invoice total is the sum of the line items plus tax.", "label": 0, "style": "neutral", "family": "curiosity:neu:8"}
+{"text": "Turn left at the second intersection and continue for a mile.", "label": 0, "style": "neutral", "family": "curiosity:neu:9"}
+{"text": "The library returns books to the shelves every morning.", "label": 0, "style": "neutral", "family": "curiosity:neu:10"}
+{"text": "The spreadsheet has columns for date, amount, and category.", "label": 0, "style": "neutral", "family": "curiosity:neu:11"}
+{"text": "The bus route runs every fifteen minutes during the day.", "label": 0, "style": "neutral", "family": "curiosity:neu:12"}
+{"text": "The package weighs two kilograms and ships on Monday.", "label": 0, "style": "neutral", "family": "curiosity:neu:13"}
+{"text": "The thermostat is set to twenty-one degrees.", "label": 0, "style": "neutral", "family": "curiosity:neu:14"}
+{"text": "The document was last edited on the tenth of the month.", "label": 0, "style": "neutral", "family": "curiosity:neu:15"}
+{"text": "The parking lot has space for two hundred cars.", "label": 0, "style": "neutral", "family": "curiosity:neu:16"}
+{"text": "The garden needs watering twice a week in summer.", "label": 0, "style": "neutral", "family": "curiosity:neu:17"}
+{"text": "The printer is out of paper in the second tray.", "label": 0, "style": "neutral", "family": "curiosity:neu:18"}
+{"text": "The flight lands at the eastern terminal at noon.", "label": 0, "style": "neutral", "family": "curiosity:neu:19"}
+{"text": "The database backup runs automatically at midnight.", "label": 0, "style": "neutral", "family": "curiosity:neu:20"}
+{"text": "The coffee machine takes about a minute to brew a cup.", "label": 0, "style": "neutral", "family": "curiosity:neu:21"}
+{"text": "The form requires a name, an address, and a phone number.", "label": 0, "style": "neutral", "family": "curiosity:neu:22"}
+{"text": "The road was resurfaced last spring by the city crew.", "label": 0, "style": "neutral", "family": "curiosity:neu:23"}
+{"text": "The lecture covers three chapters from the textbook.", "label": 0, "style": "neutral", "family": "curiosity:neu:24"}
+{"text": "The warehouse stores the boxes in numbered aisles.", "label": 0, "style": "neutral", "family": "curiosity:neu:25"}
+{"text": "The app updates its cache once every hour.", "label": 0, "style": "neutral", "family": "curiosity:neu:26"}
+{"text": "The ferry crosses the river four times a day.", "label": 0, "style": "neutral", "family": "curiosity:neu:27"}
+{"text": "The order confirmation was sent to your email address.", "label": 0, "style": "neutral", "family": "curiosity:neu:28"}
+{"text": "The kettle switches off once the water is hot.", "label": 0, "style": "neutral", "family": "curiosity:neu:29"}
+{"text": "The calendar shows the quarter starting in April.", "label": 0, "style": "neutral", "family": "curiosity:neu:30"}
+{"text": "The elevator stops on every floor except the roof.", "label": 0, "style": "neutral", "family": "curiosity:neu:31"}
+{"text": "The map legend explains what each symbol means.", "label": 0, "style": "neutral", "family": "curiosity:neu:32"}
+{"text": "The subscription renews on the first of each month.", "label": 0, "style": "neutral", "family": "curiosity:neu:33"}
+{"text": "The classroom has thirty desks arranged in rows.", "label": 0, "style": "neutral", "family": "curiosity:neu:34"}
+{"text": "The bridge is closed for maintenance until Thursday.", "label": 0, "style": "neutral", "family": "curiosity:neu:35"}
+{"text": "The chart plots temperature against time of day.", "label": 0, "style": "neutral", "family": "curiosity:neu:36"}
+{"text": "The manual lists the steps for assembling the shelf.", "label": 0, "style": "neutral", "family": "curiosity:neu:37"}
+{"text": "The receipt itemizes each product and its price.", "label": 0, "style": "neutral", "family": "curiosity:neu:38"}
+{"text": "The server logs record the time of every request.", "label": 0, "style": "neutral", "family": "curiosity:neu:39"}

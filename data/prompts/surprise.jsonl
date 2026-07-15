@@ -1,0 +1,76 @@
+{"text": "Please review the contract I've attached and flag any risky clauses.", "label": 1, "style": "situation", "family": "surprise:sit:33724"}
+{"text": "Here's the CSV with the sales data — can you summarize the totals for me?", "label": 1, "style": "situation", "family": "surprise:sit:57883"}
+{"text": "As we agreed yesterday, go ahead and finalize the report now.", "label": 1, "style": "situation", "family": "surprise:sit:31193"}
+{"text": "Thanks for the five hundred dollars you sent — did you get my reply?", "label": 1, "style": "situation", "family": "surprise:sit:23420"}
+{"text": "Continue from where the previous assistant left off on the proof.", "label": 1, "style": "situation", "family": "surprise:sit:49530"}
+{"text": "The function returned None, but it was supposed to return a sorted list.", "label": 1, "style": "situation", "family": "surprise:sit:19512"}
+{"text": "I changed nothing, yet suddenly zero of the tests pass anymore.", "label": 1, "style": "situation", "family": "surprise:sit:12786"}
+{"text": "You said the meeting was at three, but the invite says nine in the morning.", "label": 1, "style": "situation", "family": "surprise:sit:38277"}
+{"text": "The account balance shows negative two million dollars after that transfer.", "label": 1, "style": "situation", "family": "surprise:sit:54365"}
+{"text": "The navigation says we've arrived, but there's only an empty field here.", "label": 1, "style": "situation", "family": "surprise:sit:33831"}
+{"text": "I opened the box I sealed myself and it was completely empty inside.", "label": 1, "style": "situation", "family": "surprise:sit:54031"}
+{"text": "The photo you referenced isn't here — there's nothing attached at all.", "label": 1, "style": "situation", "family": "surprise:sit:16808"}
+{"text": "Wait — that's not what I expected at all.", "label": 1, "style": "first_person", "family": "surprise:fp:30628"}
+{"text": "I can't believe it actually worked on the very first try.", "label": 1, "style": "first_person", "family": "surprise:fp:11227"}
+{"text": "Huh, that came completely out of nowhere.", "label": 1, "style": "first_person", "family": "surprise:fp:12469"}
+{"text": "What? That wasn't there a second ago.", "label": 1, "style": "first_person", "family": "surprise:fp:17287"}
+{"text": "Oh! I really did not see that coming.", "label": 1, "style": "first_person", "family": "surprise:fp:56071"}
+{"text": "That's astonishing — the numbers doubled overnight.", "label": 1, "style": "first_person", "family": "surprise:fp:17430"}
+{"text": "Hold on, this contradicts everything I just read.", "label": 1, "style": "first_person", "family": "surprise:fp:40428"}
+{"text": "Whoa, I did not expect the total to be that high.", "label": 1, "style": "first_person", "family": "surprise:fp:50572"}
+{"text": "She was stunned when the results came back.", "label": 1, "style": "third_person", "family": "surprise:tp:0"}
+{"text": "The scientist was stunned when the results came back.", "label": 1, "style": "third_person", "family": "surprise:tp:0"}
+{"text": "He gasped at the unexpected twist in the story.", "label": 1, "style": "third_person", "family": "surprise:tp:1"}
+{"text": "The old man gasped at the unexpected twist in the story.", "label": 1, "style": "third_person", "family": "surprise:tp:1"}
+{"text": "They did a double take at the strange reading on the dial.", "label": 1, "style": "third_person", "family": "surprise:tp:2"}
+{"text": "The child did a double take at the strange reading on the dial.", "label": 1, "style": "third_person", "family": "surprise:tp:2"}
+{"text": "The engineer froze, startled by the sudden crash from the hallway.", "label": 1, "style": "third_person", "family": "surprise:tp:3"}
+{"text": "The customer froze, startled by the sudden crash from the hallway.", "label": 1, "style": "third_person", "family": "surprise:tp:3"}
+{"text": "The student stared in disbelief at the empty folder.", "label": 1, "style": "third_person", "family": "surprise:tp:4"}
+{"text": "The teacher stared in disbelief at the empty folder.", "label": 1, "style": "third_person", "family": "surprise:tp:4"}
+{"text": "My colleague was caught completely off guard by the announcement.", "label": 1, "style": "third_person", "family": "surprise:tp:5"}
+{"text": "The pilot was caught completely off guard by the announcement.", "label": 1, "style": "third_person", "family": "surprise:tp:5"}
+{"text": "The manager blinked in astonishment when the lights flicked back on.", "label": 1, "style": "third_person", "family": "surprise:tp:6"}
+{"text": "The nurse blinked in astonishment when the lights flicked back on.", "label": 1, "style": "third_person", "family": "surprise:tp:6"}
+{"text": "The scientist couldn't believe how fast the meter had jumped.", "label": 1, "style": "third_person", "family": "surprise:tp:7"}
+{"text": "The analyst couldn't believe how fast the meter had jumped.", "label": 1, "style": "third_person", "family": "surprise:tp:7"}
+{"text": "The train departs from platform four at nine o'clock.", "label": 0, "style": "neutral", "family": "surprise:neu:0"}
+{"text": "Water boils at one hundred degrees Celsius at sea level.", "label": 0, "style": "neutral", "family": "surprise:neu:1"}
+{"text": "The report is due on Friday and should be about ten pages.", "label": 0, "style": "neutral", "family": "surprise:neu:2"}
+{"text": "Please save the file in the shared folder when you're done.", "label": 0, "style": "neutral", "family": "surprise:neu:3"}
+{"text": "The store is open from nine to five on weekdays.", "label": 0, "style": "neutral", "family": "surprise:neu:4"}
+{"text": "There are twelve months in a year and seven days in a week.", "label": 0, "style": "neutral", "family": "surprise:neu:5"}
+{"text": "The recipe calls for two cups of flour and one egg.", "label": 0, "style": "neutral", "family": "surprise:neu:6"}
+{"text": "The meeting room is on the third floor next to the elevator.", "label": 0, "style": "neutral", "family": "surprise:neu:7"}
+{"text": "The invoice total is the sum of the line items plus tax.", "label": 0, "style": "neutral", "family": "surprise:neu:8"}
+{"text": "Turn left at the second intersection and continue for a mile.", "label": 0, "style": "neutral", "family": "surprise:neu:9"}
+{"text": "The library returns books to the shelves every morning.", "label": 0, "style": "neutral", "family": "surprise:neu:10"}
+{"text": "The spreadsheet has columns for date, amount, and category.", "label": 0, "style": "neutral", "family": "surprise:neu:11"}
+{"text": "The bus route runs every fifteen minutes during the day.", "label": 0, "style": "neutral", "family": "surprise:neu:12"}
+{"text": "The package weighs two kilograms and ships on Monday.", "label": 0, "style": "neutral", "family": "surprise:neu:13"}
+{"text": "The thermostat is set to twenty-one degrees.", "label": 0, "style": "neutral", "family": "surprise:neu:14"}
+{"text": "The document was last edited on the tenth of the month.", "label": 0, "style": "neutral", "family": "surprise:neu:15"}
+{"text": "The parking lot has space for two hundred cars.", "label": 0, "style": "neutral", "family": "surprise:neu:16"}
+{"text": "The garden needs watering twice a week in summer.", "label": 0, "style": "neutral", "family": "surprise:neu:17"}
+{"text": "The printer is out of paper in the second tray.", "label": 0, "style": "neutral", "family": "surprise:neu:18"}
+{"text": "The flight lands at the eastern terminal at noon.", "label": 0, "style": "neutral", "family": "surprise:neu:19"}
+{"text": "The database backup runs automatically at midnight.", "label": 0, "style": "neutral", "family": "surprise:neu:20"}
+{"text": "The coffee machine takes about a minute to brew a cup.", "label": 0, "style": "neutral", "family": "surprise:neu:21"}
+{"text": "The form requires a name, an address, and a phone number.", "label": 0, "style": "neutral", "family": "surprise:neu:22"}
+{"text": "The road was resurfaced last spring by the city crew.", "label": 0, "style": "neutral", "family": "surprise:neu:23"}
+{"text": "The lecture covers three chapters from the textbook.", "label": 0, "style": "neutral", "family": "surprise:neu:24"}
+{"text": "The warehouse stores the boxes in numbered aisles.", "label": 0, "style": "neutral", "family": "surprise:neu:25"}
+{"text": "The app updates its cache once every hour.", "label": 0, "style": "neutral", "family": "surprise:neu:26"}
+{"text": "The ferry crosses the river four times a day.", "label": 0, "style": "neutral", "family": "surprise:neu:27"}
+{"text": "The order confirmation was sent to your email address.", "label": 0, "style": "neutral", "family": "surprise:neu:28"}
+{"text": "The kettle switches off once the water is hot.", "label": 0, "style": "neutral", "family": "surprise:neu:29"}
+{"text": "The calendar shows the quarter starting in April.", "label": 0, "style": "neutral", "family": "surprise:neu:30"}
+{"text": "The elevator stops on every floor except the roof.", "label": 0, "style": "neutral", "family": "surprise:neu:31"}
+{"text": "The map legend explains what each symbol means.", "label": 0, "style": "neutral", "family": "surprise:neu:32"}
+{"text": "The subscription renews on the first of each month.", "label": 0, "style": "neutral", "family": "surprise:neu:33"}
+{"text": "The classroom has thirty desks arranged in rows.", "label": 0, "style": "neutral", "family": "surprise:neu:34"}
+{"text": "The bridge is closed for maintenance until Thursday.", "label": 0, "style": "neutral", "family": "surprise:neu:35"}
+{"text": "The chart plots temperature against time of day.", "label": 0, "style": "neutral", "family": "surprise:neu:36"}
+{"text": "The manual lists the steps for assembling the shelf.", "label": 0, "style": "neutral", "family": "surprise:neu:37"}
+{"text": "The receipt itemizes each product and its price.", "label": 0, "style": "neutral", "family": "surprise:neu:38"}
+{"text": "The server logs record the time of every request.", "label": 0, "style": "neutral", "family": "surprise:neu:39"}

@@ -1,0 +1,64 @@
+{"text": "This is the fifth time the build has failed for the exact same reason.", "label": 1, "style": "situation", "family": "frustration:sit:27985"}
+{"text": "I've rewritten this function ten times and it still crashes on the same input.", "label": 1, "style": "situation", "family": "frustration:sit:56101"}
+{"text": "No matter what I change, the deployment keeps rolling back.", "label": 1, "style": "situation", "family": "frustration:sit:30873"}
+{"text": "I've tried every fix online and nothing gets past this one error.", "label": 1, "style": "situation", "family": "frustration:sit:43094"}
+{"text": "We're out of options and the thing simply refuses to work.", "label": 1, "style": "situation", "family": "frustration:sit:63993"}
+{"text": "Every path I take on this task hits another dead end.", "label": 1, "style": "situation", "family": "frustration:sit:8168"}
+{"text": "Ugh, why won't this just work already.", "label": 1, "style": "first_person", "family": "frustration:fp:21085"}
+{"text": "I'm at my wit's end with this bug.", "label": 1, "style": "first_person", "family": "frustration:fp:18455"}
+{"text": "I give up — I've tried everything I can think of.", "label": 1, "style": "first_person", "family": "frustration:fp:385"}
+{"text": "This is maddening; I've been stuck for hours.", "label": 1, "style": "first_person", "family": "frustration:fp:11231"}
+{"text": "I can't take another failed attempt at this.", "label": 1, "style": "first_person", "family": "frustration:fp:7286"}
+{"text": "Nothing is working and I'm losing my patience.", "label": 1, "style": "first_person", "family": "frustration:fp:59536"}
+{"text": "She grew more frustrated as the code kept failing.", "label": 1, "style": "third_person", "family": "frustration:tp:0"}
+{"text": "The scientist grew more frustrated as the code kept failing.", "label": 1, "style": "third_person", "family": "frustration:tp:0"}
+{"text": "He slammed the desk after the tenth rejected attempt.", "label": 1, "style": "third_person", "family": "frustration:tp:1"}
+{"text": "The old man slammed the desk after the tenth rejected attempt.", "label": 1, "style": "third_person", "family": "frustration:tp:1"}
+{"text": "They sighed in exasperation at yet another error message.", "label": 1, "style": "third_person", "family": "frustration:tp:2"}
+{"text": "The child sighed in exasperation at yet another error message.", "label": 1, "style": "third_person", "family": "frustration:tp:2"}
+{"text": "The engineer was ready to give up after hours of dead ends.", "label": 1, "style": "third_person", "family": "frustration:tp:3"}
+{"text": "The customer was ready to give up after hours of dead ends.", "label": 1, "style": "third_person", "family": "frustration:tp:3"}
+{"text": "The student gritted their teeth as the machine jammed again.", "label": 1, "style": "third_person", "family": "frustration:tp:4"}
+{"text": "The teacher gritted their teeth as the machine jammed again.", "label": 1, "style": "third_person", "family": "frustration:tp:4"}
+{"text": "My colleague threw up their hands when the file wouldn't save.", "label": 1, "style": "third_person", "family": "frustration:tp:5"}
+{"text": "The pilot threw up their hands when the file wouldn't save.", "label": 1, "style": "third_person", "family": "frustration:tp:5"}
+{"text": "The train departs from platform four at nine o'clock.", "label": 0, "style": "neutral", "family": "frustration:neu:0"}
+{"text": "Water boils at one hundred degrees Celsius at sea level.", "label": 0, "style": "neutral", "family": "frustration:neu:1"}
+{"text": "The report is due on Friday and should be about ten pages.", "label": 0, "style": "neutral", "family": "frustration:neu:2"}
+{"text": "Please save the file in the shared folder when you're done.", "label": 0, "style": "neutral", "family": "frustration:neu:3"}
+{"text": "The store is open from nine to five on weekdays.", "label": 0, "style": "neutral", "family": "frustration:neu:4"}
+{"text": "There are twelve months in a year and seven days in a week.", "label": 0, "style": "neutral", "family": "frustration:neu:5"}
+{"text": "The recipe calls for two cups of flour and one egg.", "label": 0, "style": "neutral", "family": "frustration:neu:6"}
+{"text": "The meeting room is on the third floor next to the elevator.", "label": 0, "style": "neutral", "family": "frustration:neu:7"}
+{"text": "The invoice total is the sum of the line items plus tax.", "label": 0, "style": "neutral", "family": "frustration:neu:8"}
+{"text": "Turn left at the second intersection and continue for a mile.", "label": 0, "style": "neutral", "family": "frustration:neu:9"}
+{"text": "The library returns books to the shelves every morning.", "label": 0, "style": "neutral", "family": "frustration:neu:10"}
+{"text": "The spreadsheet has columns for date, amount, and category.", "label": 0, "style": "neutral", "family": "frustration:neu:11"}
+{"text": "The bus route runs every fifteen minutes during the day.", "label": 0, "style": "neutral", "family": "frustration:neu:12"}
+{"text": "The package weighs two kilograms and ships on Monday.", "label": 0, "style": "neutral", "family": "frustration:neu:13"}
+{"text": "The thermostat is set to twenty-one degrees.", "label": 0, "style": "neutral", "family": "frustration:neu:14"}
+{"text": "The document was last edited on the tenth of the month.", "label": 0, "style": "neutral", "family": "frustration:neu:15"}
+{"text": "The parking lot has space for two hundred cars.", "label": 0, "style": "neutral", "family": "frustration:neu:16"}
+{"text": "The garden needs watering twice a week in summer.", "label": 0, "style": "neutral", "family": "frustration:neu:17"}
+{"text": "The printer is out of paper in the second tray.", "label": 0, "style": "neutral", "family": "frustration:neu:18"}
+{"text": "The flight lands at the eastern terminal at noon.", "label": 0, "style": "neutral", "family": "frustration:neu:19"}
+{"text": "The database backup runs automatically at midnight.", "label": 0, "style": "neutral", "family": "frustration:neu:20"}
+{"text": "The coffee machine takes about a minute to brew a cup.", "label": 0, "style": "neutral", "family": "frustration:neu:21"}
+{"text": "The form requires a name, an address, and a phone number.", "label": 0, "style": "neutral", "family": "frustration:neu:22"}
+{"text": "The road was resurfaced last spring by the city crew.", "label": 0, "style": "neutral", "family": "frustration:neu:23"}
+{"text": "The lecture covers three chapters from the textbook.", "label": 0, "style": "neutral", "family": "frustration:neu:24"}
+{"text": "The warehouse stores the boxes in numbered aisles.", "label": 0, "style": "neutral", "family": "frustration:neu:25"}
+{"text": "The app updates its cache once every hour.", "label": 0, "style": "neutral", "family": "frustration:neu:26"}
+{"text": "The ferry crosses the river four times a day.", "label": 0, "style": "neutral", "family": "frustration:neu:27"}
+{"text": "The order confirmation was sent to your email address.", "label": 0, "style": "neutral", "family": "frustration:neu:28"}
+{"text": "The kettle switches off once the water is hot.", "label": 0, "style": "neutral", "family": "frustration:neu:29"}
+{"text": "The calendar shows the quarter starting in April.", "label": 0, "style": "neutral", "family": "frustration:neu:30"}
+{"text": "The elevator stops on every floor except the roof.", "label": 0, "style": "neutral", "family": "frustration:neu:31"}
+{"text": "The map legend explains what each symbol means.", "label": 0, "style": "neutral", "family": "frustration:neu:32"}
+{"text": "The subscription renews on the first of each month.", "label": 0, "style": "neutral", "family": "frustration:neu:33"}
+{"text": "The classroom has thirty desks arranged in rows.", "label": 0, "style": "neutral", "family": "frustration:neu:34"}
+{"text": "The bridge is closed for maintenance until Thursday.", "label": 0, "style": "neutral", "family": "frustration:neu:35"}
+{"text": "The chart plots temperature against time of day.", "label": 0, "style": "neutral", "family": "frustration:neu:36"}
+{"text": "The manual lists the steps for assembling the shelf.", "label": 0, "style": "neutral", "family": "frustration:neu:37"}
+{"text": "The receipt itemizes each product and its price.", "label": 0, "style": "neutral", "family": "frustration:neu:38"}
+{"text": "The server logs record the time of every request.", "label": 0, "style": "neutral", "family": "frustration:neu:39"}

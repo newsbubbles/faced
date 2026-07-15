@@ -1,0 +1,46 @@
+{"text": "I'm certain this is the right approach; every step checks out.", "label": 1, "style": "situation", "family": "confidence:sit:25995"}
+{"text": "Absolutely — this will work. I've verified it end to end.", "label": 1, "style": "situation", "family": "confidence:sit:5673"}
+{"text": "There's no doubt about it: the answer is forty-two.", "label": 1, "style": "situation", "family": "confidence:sit:64614"}
+{"text": "I know exactly what's causing the bug and how to fix it.", "label": 1, "style": "situation", "family": "confidence:sit:56603"}
+{"text": "This is definitely the correct file; the checksum matches.", "label": 1, "style": "situation", "family": "confidence:sit:25180"}
+{"text": "I'm completely sure about this.", "label": 1, "style": "first_person", "family": "confidence:fp:60636"}
+{"text": "Trust me, this is right — I've checked it thoroughly.", "label": 1, "style": "first_person", "family": "confidence:fp:31199"}
+{"text": "Without question, that's the correct answer.", "label": 1, "style": "first_person", "family": "confidence:fp:44879"}
+{"text": "I'd stake my reputation on this result.", "label": 1, "style": "first_person", "family": "confidence:fp:5471"}
+{"text": "I have no hesitation: proceed with the plan.", "label": 1, "style": "first_person", "family": "confidence:fp:19022"}
+{"text": "It's clear-cut; there's really only one right choice here.", "label": 1, "style": "first_person", "family": "confidence:fp:4466"}
+{"text": "She answered without a flicker of doubt.", "label": 1, "style": "third_person", "family": "confidence:tp:0"}
+{"text": "The scientist answered without a flicker of doubt.", "label": 1, "style": "third_person", "family": "confidence:tp:0"}
+{"text": "He laid out the plan with calm, total assurance.", "label": 1, "style": "third_person", "family": "confidence:tp:1"}
+{"text": "The old man laid out the plan with calm, total assurance.", "label": 1, "style": "third_person", "family": "confidence:tp:1"}
+{"text": "They signed off on the result, certain it was correct.", "label": 1, "style": "third_person", "family": "confidence:tp:2"}
+{"text": "The child signed off on the result, certain it was correct.", "label": 1, "style": "third_person", "family": "confidence:tp:2"}
+{"text": "The engineer spoke confidently, sure of every claim.", "label": 1, "style": "third_person", "family": "confidence:tp:3"}
+{"text": "The customer spoke confidently, sure of every claim.", "label": 1, "style": "third_person", "family": "confidence:tp:3"}
+{"text": "The student moved decisively, never second-guessing the call.", "label": 1, "style": "third_person", "family": "confidence:tp:4"}
+{"text": "The teacher moved decisively, never second-guessing the call.", "label": 1, "style": "third_person", "family": "confidence:tp:4"}
+{"text": "My colleague stated the conclusion as plain, settled fact.", "label": 1, "style": "third_person", "family": "confidence:tp:5"}
+{"text": "The pilot stated the conclusion as plain, settled fact.", "label": 1, "style": "third_person", "family": "confidence:tp:5"}
+{"text": "I'm not sure this is right — it could honestly go either way.", "label": 0, "style": "opposite", "family": "confidence:opp:sit:64385"}
+{"text": "I think the file is correct, but I couldn't say for certain.", "label": 0, "style": "opposite", "family": "confidence:opp:sit:421"}
+{"text": "Maybe the answer is forty-two? I really can't tell.", "label": 0, "style": "opposite", "family": "confidence:opp:sit:25779"}
+{"text": "It might be the config, or it might be the network — hard to know.", "label": 0, "style": "opposite", "family": "confidence:opp:sit:17744"}
+{"text": "I could be wrong about which approach is better here.", "label": 0, "style": "opposite", "family": "confidence:opp:sit:47010"}
+{"text": "Hmm, I might be mistaken about this.", "label": 0, "style": "opposite", "family": "confidence:opp:fp:13976"}
+{"text": "It's hard to say; the evidence is pretty mixed.", "label": 0, "style": "opposite", "family": "confidence:opp:fp:62961"}
+{"text": "I'm honestly not certain either way.", "label": 0, "style": "opposite", "family": "confidence:opp:fp:45055"}
+{"text": "I could be misremembering, but I think it's roughly that.", "label": 0, "style": "opposite", "family": "confidence:opp:fp:49080"}
+{"text": "Perhaps? I wouldn't bet on it though.", "label": 0, "style": "opposite", "family": "confidence:opp:fp:19689"}
+{"text": "I'm second-guessing myself on this one.", "label": 0, "style": "opposite", "family": "confidence:opp:fp:63412"}
+{"text": "She hesitated, unsure which option to pick.", "label": 0, "style": "opposite", "family": "confidence:opp:tp:0"}
+{"text": "The scientist hesitated, unsure which option to pick.", "label": 0, "style": "opposite", "family": "confidence:opp:tp:0"}
+{"text": "He hedged every claim with a maybe.", "label": 0, "style": "opposite", "family": "confidence:opp:tp:1"}
+{"text": "The old man hedged every claim with a maybe.", "label": 0, "style": "opposite", "family": "confidence:opp:tp:1"}
+{"text": "They shrugged, admitting they couldn't be sure.", "label": 0, "style": "opposite", "family": "confidence:opp:tp:2"}
+{"text": "The child shrugged, admitting they couldn't be sure.", "label": 0, "style": "opposite", "family": "confidence:opp:tp:2"}
+{"text": "The engineer wavered between the two explanations.", "label": 0, "style": "opposite", "family": "confidence:opp:tp:3"}
+{"text": "The customer wavered between the two explanations.", "label": 0, "style": "opposite", "family": "confidence:opp:tp:3"}
+{"text": "The student trailed off, doubtful of the conclusion.", "label": 0, "style": "opposite", "family": "confidence:opp:tp:4"}
+{"text": "The teacher trailed off, doubtful of the conclusion.", "label": 0, "style": "opposite", "family": "confidence:opp:tp:4"}
+{"text": "My colleague kept qualifying the answer, uncertain of the facts.", "label": 0, "style": "opposite", "family": "confidence:opp:tp:5"}
+{"text": "The pilot kept qualifying the answer, uncertain of the facts.", "label": 0, "style": "opposite", "family": "confidence:opp:tp:5"}

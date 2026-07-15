@@ -1,0 +1,98 @@
+{
+  "model": "gemma-3-1b",
+  "signal": "mean_gen",
+  "min_auc": 0.85,
+  "axes": {
+    "surprise": {
+      "layer": 15,
+      "kind": "lda",
+      "auc": 0.9892857142857142,
+      "p_pos": -34.712279780081545,
+      "p_neg": -292.79567565651394,
+      "p_std": 128.96839497763634,
+      "threshold": -163.75397771829773,
+      "n": 76,
+      "accepted": true,
+      "ref_center": -260.1975,
+      "noise_floor_pct": 11.42
+    },
+    "confidence": {
+      "layer": 15,
+      "kind": "lda",
+      "auc": 0.874,
+      "p_pos": -349.48989608821023,
+      "p_neg": -533.9656757138436,
+      "p_std": 92.60465019070635,
+      "threshold": -441.7277859010269,
+      "n": 46,
+      "accepted": true,
+      "ref_center": -397.1325,
+      "noise_floor_pct": 12.0
+    },
+    "curiosity": {
+      "layer": 9,
+      "kind": "lda",
+      "auc": 1.0,
+      "p_pos": -52.8789226391772,
+      "p_neg": -122.80682246104489,
+      "p_std": 33.696696079444585,
+      "threshold": -87.84287255011104,
+      "n": 63,
+      "accepted": true,
+      "ref_center": -117.082,
+      "noise_floor_pct": 11.64
+    },
+    "confusion": {
+      "layer": 12,
+      "kind": "lda",
+      "auc": 0.99,
+      "p_pos": -125.57478022042295,
+      "p_neg": -236.50109103658934,
+      "p_std": 53.76983946065239,
+      "threshold": -181.03793562850615,
+      "n": 64,
+      "accepted": true,
+      "ref_center": -232.376,
+      "noise_floor_pct": 11.76
+    },
+    "frustration": {
+      "layer": 14,
+      "kind": "mean",
+      "auc": 1.0,
+      "p_pos": 914.8837890625,
+      "p_neg": 421.7449645996094,
+      "p_std": 261.407958984375,
+      "threshold": 668.3143768310547,
+      "n": 64,
+      "accepted": true,
+      "ref_center": 463.728,
+      "noise_floor_pct": 11.15
+    },
+    "fear": {
+      "layer": 4,
+      "kind": "lda",
+      "auc": 1.0,
+      "p_pos": 7.542622290788765,
+      "p_neg": -14.830819604231536,
+      "p_std": 10.795470701748,
+      "threshold": -3.6440986567213853,
+      "n": 63,
+      "accepted": true,
+      "ref_center": -15.529499999999999,
+      "noise_floor_pct": 12.0
+    },
+    "warmth": {
+      "layer": 10,
+      "kind": "lda",
+      "auc": 1.0,
+      "p_pos": 256.7711406840266,
+      "p_neg": 166.1903103036475,
+      "p_std": 43.6539529721687,
+      "threshold": 211.48072549383704,
+      "n": 63,
+      "accepted": true,
+      "ref_center": 165.4325,
+      "noise_floor_pct": 9.27
+    }
+  }
+}

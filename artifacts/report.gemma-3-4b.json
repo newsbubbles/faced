@@ -1,0 +1,44 @@
+{
+  "surprise": {
+    "layer": 33,
+    "kind": "mean",
+    "auc": 0.9205,
+    "accepted": true
+  },
+  "confidence": {
+    "layer": 33,
+    "kind": "mean",
+    "auc": 0.748,
+    "accepted": false
+  },
+  "curiosity": {
+    "layer": 33,
+    "kind": "mean",
+    "auc": 0.9488,
+    "accepted": true
+  },
+  "confusion": {
+    "layer": 33,
+    "kind": "mean",
+    "auc": 0.9613,
+    "accepted": true
+  },
+  "frustration": {
+    "layer": 33,
+    "kind": "mean",
+    "auc": 0.9838,
+    "accepted": true
+  },
+  "fear": {
+    "layer": 33,
+    "kind": "mean",
+    "auc": 0.9775,
+    "accepted": true
+  },
+  "warmth": {
+    "layer": 33,
+    "kind": "mean",
+    "auc": 0.985,
+    "accepted": true
+  }
+}

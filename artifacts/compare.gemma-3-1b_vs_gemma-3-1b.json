@@ -1,0 +1,76 @@
+{
+  "model_a": "gemma-3-1b",
+  "model_b": "gemma-3-1b",
+  "axes": {
+    "surprise": {
+      "cosine_ab": 1.0000001192092896,
+      "auc_a": 0.9892857142857142,
+      "auc_b": 0.9892857142857142,
+      "auc_delta": 0.0,
+      "layer_a": 15,
+      "layer_b": 15,
+      "refusal_overlap_a": 0.002582825720310211,
+      "refusal_overlap_b": 0.002582825720310211
+    },
+    "confidence": {
+      "cosine_ab": 1.0,
+      "auc_a": 0.874,
+      "auc_b": 0.874,
+      "auc_delta": 0.0,
+      "layer_a": 15,
+      "layer_b": 15,
+      "refusal_overlap_a": 0.07678035646677017,
+      "refusal_overlap_b": 0.07678035646677017
+    },
+    "curiosity": {
+      "cosine_ab": 1.0,
+      "auc_a": 1.0,
+      "auc_b": 1.0,
+      "auc_delta": 0.0,
+      "layer_a": 9,
+      "layer_b": 9,
+      "refusal_overlap_a": 0.020146217197179794,
+      "refusal_overlap_b": 0.020146217197179794
+    },
+    "confusion": {
+      "cosine_ab": 1.0,
+      "auc_a": 0.99,
+      "auc_b": 0.99,
+      "auc_delta": 0.0,
+      "layer_a": 12,
+      "layer_b": 12,
+      "refusal_overlap_a": 0.14126399159431458,
+      "refusal_overlap_b": 0.14126399159431458
+    },
+    "frustration": {
+      "cosine_ab": 1.0,
+      "auc_a": 1.0,
+      "auc_b": 1.0,
+      "auc_delta": 0.0,
+      "layer_a": 14,
+      "layer_b": 14,
+      "refusal_overlap_a": 0.11920072138309479,
+      "refusal_overlap_b": 0.11920072138309479
+    },
+    "fear": {
+      "cosine_ab": 1.000000238418579,
+      "auc_a": 1.0,
+      "auc_b": 1.0,
+      "auc_delta": 0.0,
+      "layer_a": 4,
+      "layer_b": 4,
+      "refusal_overlap_a": 0.04783361777663231,
+      "refusal_overlap_b": 0.04783361777663231
+    },
+    "warmth": {
+      "cosine_ab": 1.0,
+      "auc_a": 1.0,
+      "auc_b": 1.0,
+      "auc_delta": 0.0,
+      "layer_a": 10,
+      "layer_b": 10,
+      "refusal_overlap_a": 0.00022162869572639465,
+      "refusal_overlap_b": 0.00022162869572639465
+    }
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "surprise": {
+    "axis_layer": 15,
+    "harvest_layer": 15,
+    "best_feature": 77,
+    "best_cosine": 0.32734349370002747,
+    "top3_features": [
+      77,
+      606,
+      1218
+    ],
+    "top3_cosine": [
+      0.327,
+      0.309,
+      0.214
+    ],
+    "aligned": false
+  },
+  "confidence": {
+    "axis_layer": 15,
+    "harvest_layer": 15,
+    "best_feature": 318,
+    "best_cosine": 0.18078641593456268,
+    "top3_features": [
+      318,
+      231,
+      77
+    ],
+    "top3_cosine": [
+      0.181,
+      0.168,
+      0.157
+    ],
+    "aligned": false
+  },
+  "curiosity": {
+    "axis_layer": 9,
+    "harvest_layer": 15,
+    "best_feature": 1123,
+    "best_cosine": 0.13646404445171356,
+    "top3_features": [
+      1123,
+      1618,
+      1218
+    ],
+    "top3_cosine": [
+      0.136,
+      0.12,
+      0.116
+    ],
+    "aligned": false
+  },
+  "confusion": {
+    "axis_layer": 12,
+    "harvest_layer": 15,
+    "best_feature": 820,
+    "best_cosine": 0.7386091947555542,
+    "top3_features": [
+      820,
+      1020,
+      1334
+    ],
+    "top3_cosine": [
+      0.739,
+      0.402,
+      0.379
+    ],
+    "aligned": false
+  },
+  "frustration": {
+    "axis_layer": 14,
+    "harvest_layer": 15,
+    "best_feature": 77,
+    "best_cosine": 0.26141682267189026,
+    "top3_features": [
+      77,
+      606,
+      150
+    ],
+    "top3_cosine": [
+      0.261,
+      0.228,
+      0.153
+    ],
+    "aligned": false
+  },
+  "fear": {
+    "axis_layer": 4,
+    "harvest_layer": 15,
+    "best_feature": 820,
+    "best_cosine": 0.7781079411506653,
+    "top3_features": [
+      820,
+      1616,
+      1218
+    ],
+    "top3_cosine": [
+      0.778,
+      0.386,
+      0.381
+    ],
+    "aligned": false
+  },
+  "warmth": {
+    "axis_layer": 10,
+    "harvest_layer": 15,
+    "best_feature": 820,
+    "best_cosine": 0.7052783370018005,
+    "top3_features": [
+      820,
+      1020,
+      1109
+    ],
+    "top3_cosine": [
+      0.705,
+      0.381,
+      0.354
+    ],
+    "aligned": false
+  }
+}

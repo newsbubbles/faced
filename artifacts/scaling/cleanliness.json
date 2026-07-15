@@ -1,0 +1,214 @@
+{
+  "models": {
+    "gemma-3-1b": {
+      "surprise": {
+        "layer": 15,
+        "auc": 0.9893,
+        "dprime": 3.1794,
+        "self_cos_mean": 0.9392,
+        "self_cos_p05": 0.8679
+      },
+      "confidence": {
+        "layer": 15,
+        "auc": 0.75,
+        "dprime": 1.4165,
+        "self_cos_mean": 0.8126,
+        "self_cos_p05": 0.5994
+      },
+      "curiosity": {
+        "layer": 16,
+        "auc": 0.9525,
+        "dprime": 3.2195,
+        "self_cos_mean": 0.9326,
+        "self_cos_p05": 0.8354
+      },
+      "confusion": {
+        "layer": 23,
+        "auc": 0.9525,
+        "dprime": 2.704,
+        "self_cos_mean": 0.9022,
+        "self_cos_p05": 0.8057
+      },
+      "frustration": {
+        "layer": 13,
+        "auc": 1.0,
+        "dprime": 4.1376,
+        "self_cos_mean": 0.9454,
+        "self_cos_p05": 0.8783
+      },
+      "fear": {
+        "layer": 16,
+        "auc": 1.0,
+        "dprime": 5.6997,
+        "self_cos_mean": 0.9478,
+        "self_cos_p05": 0.8856
+      },
+      "warmth": {
+        "layer": 25,
+        "auc": 0.985,
+        "dprime": 3.7284,
+        "self_cos_mean": 0.9587,
+        "self_cos_p05": 0.904
+      }
+    },
+    "gemma-3-4b": {
+      "surprise": {
+        "layer": 33,
+        "auc": 0.9205,
+        "dprime": 2.4165,
+        "self_cos_mean": 0.9508,
+        "self_cos_p05": 0.8999
+      },
+      "confidence": {
+        "layer": 33,
+        "auc": 0.748,
+        "dprime": 1.7603,
+        "self_cos_mean": 0.7828,
+        "self_cos_p05": 0.5941
+      },
+      "curiosity": {
+        "layer": 33,
+        "auc": 0.9488,
+        "dprime": 3.0085,
+        "self_cos_mean": 0.9497,
+        "self_cos_p05": 0.8808
+      },
+      "confusion": {
+        "layer": 33,
+        "auc": 0.9613,
+        "dprime": 2.9657,
+        "self_cos_mean": 0.9539,
+        "self_cos_p05": 0.8987
+      },
+      "frustration": {
+        "layer": 33,
+        "auc": 0.9838,
+        "dprime": 3.9407,
+        "self_cos_mean": 0.9523,
+        "self_cos_p05": 0.8988
+      },
+      "fear": {
+        "layer": 33,
+        "auc": 0.9775,
+        "dprime": 3.8528,
+        "self_cos_mean": 0.9657,
+        "self_cos_p05": 0.9098
+      },
+      "warmth": {
+        "layer": 33,
+        "auc": 0.985,
+        "dprime": 4.4846,
+        "self_cos_mean": 0.973,
+        "self_cos_p05": 0.9353
+      }
+    },
+    "gemma-3-12b": {
+      "surprise": {
+        "layer": 47,
+        "auc": 0.9567,
+        "dprime": 2.6638,
+        "self_cos_mean": 0.9598,
+        "self_cos_p05": 0.9153
+      },
+      "confidence": {
+        "layer": 47,
+        "auc": 0.86,
+        "dprime": 1.9859,
+        "self_cos_mean": 0.8057,
+        "self_cos_p05": 0.5837
+      },
+      "curiosity": {
+        "layer": 47,
+        "auc": 0.975,
+        "dprime": 3.4088,
+        "self_cos_mean": 0.9511,
+        "self_cos_p05": 0.8912
+      },
+      "confusion": {
+        "layer": 47,
+        "auc": 0.9838,
+        "dprime": 3.3019,
+        "self_cos_mean": 0.9569,
+        "self_cos_p05": 0.9113
+      },
+      "frustration": {
+        "layer": 47,
+        "auc": 1.0,
+        "dprime": 4.3998,
+        "self_cos_mean": 0.9579,
+        "self_cos_p05": 0.9129
+      },
+      "fear": {
+        "layer": 47,
+        "auc": 0.995,
+        "dprime": 5.0151,
+        "self_cos_mean": 0.9631,
+        "self_cos_p05": 0.9153
+      },
+      "warmth": {
+        "layer": 47,
+        "auc": 0.9838,
+        "dprime": 4.6333,
+        "self_cos_mean": 0.9689,
+        "self_cos_p05": 0.9302
+      }
+    },
+    "gemma-3-27b": {
+      "surprise": {
+        "layer": 34,
+        "auc": 0.9862,
+        "dprime": 3.8009,
+        "self_cos_mean": 0.9104,
+        "self_cos_p05": 0.8341
+      },
+      "confidence": {
+        "layer": 61,
+        "auc": 0.834,
+        "dprime": 2.9392,
+        "self_cos_mean": 0.7764,
+        "self_cos_p05": 0.5954
+      },
+      "curiosity": {
+        "layer": 61,
+        "auc": 0.9875,
+        "dprime": 4.6932,
+        "self_cos_mean": 0.937,
+        "self_cos_p05": 0.8635
+      },
+      "confusion": {
+        "layer": 61,
+        "auc": 0.995,
+        "dprime": 4.2516,
+        "self_cos_mean": 0.943,
+        "self_cos_p05": 0.8865
+      },
+      "frustration": {
+        "layer": 34,
+        "auc": 1.0,
+        "dprime": 4.6069,
+        "self_cos_mean": 0.932,
+        "self_cos_p05": 0.8683
+      },
+      "fear": {
+        "layer": 61,
+        "auc": 1.0,
+        "dprime": 6.4654,
+        "self_cos_mean": 0.9563,
+        "self_cos_p05": 0.8952
+      },
+      "warmth": {
+        "layer": 34,
+        "auc": 1.0,
+        "dprime": 4.7786,
+        "self_cos_mean": 0.9557,
+        "self_cos_p05": 0.9111
+      }
+    }
+  },
+  "params_b": {
+    "gemma-3-1b": 1.0,
+    "gemma-3-4b": 4.3,
+    "gemma-3-12b": 12.2,
+    "gemma-3-27b": 27.4
+  }
+}

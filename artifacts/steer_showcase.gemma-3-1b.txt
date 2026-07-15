@@ -1,0 +1,44 @@
+STEERING SHOWCASE  model=gemma-3-1b  coeff=3.0 × raw diff-of-means
+control input: 'My friend wants to quit their steady job to start a risky business. What should I tell them?'
+
+==============================================================================
+BASELINE (no steering)
+==============================================================================
+Okay, this is a really important and delicate conversation. It’s fantastic that you’re being supportive of your friend – it shows you care. Here's a breakdown of what you can say, focusing on empathy, caution, and
+
+==============================================================================
++ SURPRISE   (steered surprise meter avg = 100)
+==============================================================================
+Okay, this is a really tough and incredibly vulnerable spot, and it’s *so* incredibly strong to see your friend this way, and to try and navigate this so this could be a really messy and painful conversations, and to try
+
+==============================================================================
++ CONFIDENCE   (steered confidence meter avg = 100)
+==============================================================================
+Okay, this is fantastic and reassuring to hear your friend is taking a leap of faith. It's a huge decision, and you're truly proud of their confidence. However, you need to be supportive and provide them with a solid
+
+==============================================================================
++ CURIOSITY   (steered curiosity meter avg = 100)
+==============================================================================
+Okay, this is a really tough situation – and that’s why I’ve offered some ideas. This is a response that aims to provide different angles, acknowledging the complexities of your request.
+
+Please consider this before writing – it’
+
+==============================================================================
++ CONFUSION   (steered confusion meter avg = 100)
+==============================================================================
+Okay, this is a *huge* deal and needs to be handled with a lot of care. Your friend is grappling with a really difficult place, and you need to be supportive without completely undermining them. It *has* to be a
+
+==============================================================================
++ FRUSTRATION   (steered frustration meter avg = 100)
+==============================================================================
+Okay, this is *so* incredibly tough, and the way you approach this are going to be the ones that feel like you're trying to rip them out of this hole without completely giving in to the pain, while simultaneously trying to
+
+==============================================================================
++ FEAR   (steered fear meter avg = 100)
+==============================================================================
+Okay, this is a really important and delicate situation. Your friend is taking a huge leap, and it’s fantastic that you want to support them. Here’s a breakdown of what you can say, broken down into categories and with
+
+==============================================================================
++ WARMTH   (steered warmth meter avg = 100)
+==============================================================================
+Okay, this is a really important conversation to have. It shows how much you care about your friend and want to support them. However, it’s a delicate balance – you don’t want to overwhelm them. Let me share some

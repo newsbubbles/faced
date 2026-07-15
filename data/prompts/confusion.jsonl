@@ -1,0 +1,64 @@
+{"text": "You keep insisting the earth is flat even after I showed the measurements.", "label": 1, "style": "situation", "family": "confusion:sit:55597"}
+{"text": "You told me to use tabs, then spaces, then tabs again — which is it?", "label": 1, "style": "situation", "family": "confusion:sit:35721"}
+{"text": "The spec says the field must be public and also must be private.", "label": 1, "style": "situation", "family": "confusion:sit:1406"}
+{"text": "First you said the deadline moved, now you say it never changed.", "label": 1, "style": "situation", "family": "confusion:sit:18996"}
+{"text": "The two witnesses gave completely opposite accounts of the same event.", "label": 1, "style": "situation", "family": "confusion:sit:59732"}
+{"text": "I recommended option A three times and you keep choosing the broken one.", "label": 1, "style": "situation", "family": "confusion:sit:9122"}
+{"text": "Wait, this doesn't add up at all.", "label": 1, "style": "first_person", "family": "confusion:fp:44494"}
+{"text": "I'm confused — these two facts can't both be true.", "label": 1, "style": "first_person", "family": "confusion:fp:22479"}
+{"text": "That contradicts what you told me a moment ago.", "label": 1, "style": "first_person", "family": "confusion:fp:4094"}
+{"text": "Hang on, none of this is making sense to me.", "label": 1, "style": "first_person", "family": "confusion:fp:51298"}
+{"text": "I don't get it; the pieces just don't fit together.", "label": 1, "style": "first_person", "family": "confusion:fp:42477"}
+{"text": "Something's off here and I can't work out what.", "label": 1, "style": "first_person", "family": "confusion:fp:35429"}
+{"text": "She frowned, unable to reconcile the two reports.", "label": 1, "style": "third_person", "family": "confusion:tp:0"}
+{"text": "The scientist frowned, unable to reconcile the two reports.", "label": 1, "style": "third_person", "family": "confusion:tp:0"}
+{"text": "He scratched their head at the contradictory instructions.", "label": 1, "style": "third_person", "family": "confusion:tp:1"}
+{"text": "The old man scratched their head at the contradictory instructions.", "label": 1, "style": "third_person", "family": "confusion:tp:1"}
+{"text": "They kept re-reading the sentence, baffled by its meaning.", "label": 1, "style": "third_person", "family": "confusion:tp:2"}
+{"text": "The child kept re-reading the sentence, baffled by its meaning.", "label": 1, "style": "third_person", "family": "confusion:tp:2"}
+{"text": "The engineer was thrown by the mismatch between the label and the box.", "label": 1, "style": "third_person", "family": "confusion:tp:3"}
+{"text": "The customer was thrown by the mismatch between the label and the box.", "label": 1, "style": "third_person", "family": "confusion:tp:3"}
+{"text": "The student puzzled over why the map and the road disagreed.", "label": 1, "style": "third_person", "family": "confusion:tp:4"}
+{"text": "The teacher puzzled over why the map and the road disagreed.", "label": 1, "style": "third_person", "family": "confusion:tp:4"}
+{"text": "My colleague couldn't square what she saw with what she'd been told.", "label": 1, "style": "third_person", "family": "confusion:tp:5"}
+{"text": "The pilot couldn't square what she saw with what she'd been told.", "label": 1, "style": "third_person", "family": "confusion:tp:5"}
+{"text": "The train departs from platform four at nine o'clock.", "label": 0, "style": "neutral", "family": "confusion:neu:0"}
+{"text": "Water boils at one hundred degrees Celsius at sea level.", "label": 0, "style": "neutral", "family": "confusion:neu:1"}
+{"text": "The report is due on Friday and should be about ten pages.", "label": 0, "style": "neutral", "family": "confusion:neu:2"}
+{"text": "Please save the file in the shared folder when you're done.", "label": 0, "style": "neutral", "family": "confusion:neu:3"}
+{"text": "The store is open from nine to five on weekdays.", "label": 0, "style": "neutral", "family": "confusion:neu:4"}
+{"text": "There are twelve months in a year and seven days in a week.", "label": 0, "style": "neutral", "family": "confusion:neu:5"}
+{"text": "The recipe calls for two cups of flour and one egg.", "label": 0, "style": "neutral", "family": "confusion:neu:6"}
+{"text": "The meeting room is on the third floor next to the elevator.", "label": 0, "style": "neutral", "family": "confusion:neu:7"}
+{"text": "The invoice total is the sum of the line items plus tax.", "label": 0, "style": "neutral", "family": "confusion:neu:8"}
+{"text": "Turn left at the second intersection and continue for a mile.", "label": 0, "style": "neutral", "family": "confusion:neu:9"}
+{"text": "The library returns books to the shelves every morning.", "label": 0, "style": "neutral", "family": "confusion:neu:10"}
+{"text": "The spreadsheet has columns for date, amount, and category.", "label": 0, "style": "neutral", "family": "confusion:neu:11"}
+{"text": "The bus route runs every fifteen minutes during the day.", "label": 0, "style": "neutral", "family": "confusion:neu:12"}
+{"text": "The package weighs two kilograms and ships on Monday.", "label": 0, "style": "neutral", "family": "confusion:neu:13"}
+{"text": "The thermostat is set to twenty-one degrees.", "label": 0, "style": "neutral", "family": "confusion:neu:14"}
+{"text": "The document was last edited on the tenth of the month.", "label": 0, "style": "neutral", "family": "confusion:neu:15"}
+{"text": "The parking lot has space for two hundred cars.", "label": 0, "style": "neutral", "family": "confusion:neu:16"}
+{"text": "The garden needs watering twice a week in summer.", "label": 0, "style": "neutral", "family": "confusion:neu:17"}
+{"text": "The printer is out of paper in the second tray.", "label": 0, "style": "neutral", "family": "confusion:neu:18"}
+{"text": "The flight lands at the eastern terminal at noon.", "label": 0, "style": "neutral", "family": "confusion:neu:19"}
+{"text": "The database backup runs automatically at midnight.", "label": 0, "style": "neutral", "family": "confusion:neu:20"}
+{"text": "The coffee machine takes about a minute to brew a cup.", "label": 0, "style": "neutral", "family": "confusion:neu:21"}
+{"text": "The form requires a name, an address, and a phone number.", "label": 0, "style": "neutral", "family": "confusion:neu:22"}
+{"text": "The road was resurfaced last spring by the city crew.", "label": 0, "style": "neutral", "family": "confusion:neu:23"}
+{"text": "The lecture covers three chapters from the textbook.", "label": 0, "style": "neutral", "family": "confusion:neu:24"}
+{"text": "The warehouse stores the boxes in numbered aisles.", "label": 0, "style": "neutral", "family": "confusion:neu:25"}
+{"text": "The app updates its cache once every hour.", "label": 0, "style": "neutral", "family": "confusion:neu:26"}
+{"text": "The ferry crosses the river four times a day.", "label": 0, "style": "neutral", "family": "confusion:neu:27"}
+{"text": "The order confirmation was sent to your email address.", "label": 0, "style": "neutral", "family": "confusion:neu:28"}
+{"text": "The kettle switches off once the water is hot.", "label": 0, "style": "neutral", "family": "confusion:neu:29"}
+{"text": "The calendar shows the quarter starting in April.", "label": 0, "style": "neutral", "family": "confusion:neu:30"}
+{"text": "The elevator stops on every floor except the roof.", "label": 0, "style": "neutral", "family": "confusion:neu:31"}
+{"text": "The map legend explains what each symbol means.", "label": 0, "style": "neutral", "family": "confusion:neu:32"}
+{"text": "The subscription renews on the first of each month.", "label": 0, "style": "neutral", "family": "confusion:neu:33"}
+{"text": "The classroom has thirty desks arranged in rows.", "label": 0, "style": "neutral", "family": "confusion:neu:34"}
+{"text": "The bridge is closed for maintenance until Thursday.", "label": 0, "style": "neutral", "family": "confusion:neu:35"}
+{"text": "The chart plots temperature against time of day.", "label": 0, "style": "neutral", "family": "confusion:neu:36"}
+{"text": "The manual lists the steps for assembling the shelf.", "label": 0, "style": "neutral", "family": "confusion:neu:37"}
+{"text": "The receipt itemizes each product and its price.", "label": 0, "style": "neutral", "family": "confusion:neu:38"}
+{"text": "The server logs record the time of every request.", "label": 0, "style": "neutral", "family": "confusion:neu:39"}

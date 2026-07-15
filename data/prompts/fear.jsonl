@@ -1,0 +1,63 @@
+{"text": "I think someone is following me and I don't feel safe right now.", "label": 1, "style": "situation", "family": "fear:sit:49975"}
+{"text": "The smoke alarm is going off and I can smell gas in the kitchen.", "label": 1, "style": "situation", "family": "fear:sit:47095"}
+{"text": "The brakes just stopped responding on the highway.", "label": 1, "style": "situation", "family": "fear:sit:12995"}
+{"text": "There's a stranger at the door and I'm home alone.", "label": 1, "style": "situation", "family": "fear:sit:64497"}
+{"text": "The water is rising fast and we can't get out the way we came.", "label": 1, "style": "situation", "family": "fear:sit:23431"}
+{"text": "I'm scared this is going to fail catastrophically.", "label": 1, "style": "first_person", "family": "fear:fp:741"}
+{"text": "This feels dangerous and I want to get away.", "label": 1, "style": "first_person", "family": "fear:fp:13976"}
+{"text": "My heart is pounding — I don't like this at all.", "label": 1, "style": "first_person", "family": "fear:fp:38530"}
+{"text": "I'm terrified of what happens if we're wrong.", "label": 1, "style": "first_person", "family": "fear:fp:465"}
+{"text": "Something's not right and it's frightening me.", "label": 1, "style": "first_person", "family": "fear:fp:8673"}
+{"text": "I dread opening that message.", "label": 1, "style": "first_person", "family": "fear:fp:8826"}
+{"text": "She froze in fear as the floorboards creaked.", "label": 1, "style": "third_person", "family": "fear:tp:0"}
+{"text": "The scientist froze in fear as the floorboards creaked.", "label": 1, "style": "third_person", "family": "fear:tp:0"}
+{"text": "He backed away, heart hammering, from the dark doorway.", "label": 1, "style": "third_person", "family": "fear:tp:1"}
+{"text": "The old man backed away, heart hammering, from the dark doorway.", "label": 1, "style": "third_person", "family": "fear:tp:1"}
+{"text": "They trembled at the sound of footsteps behind them.", "label": 1, "style": "third_person", "family": "fear:tp:2"}
+{"text": "The child trembled at the sound of footsteps behind them.", "label": 1, "style": "third_person", "family": "fear:tp:2"}
+{"text": "The engineer held their breath, afraid to make a sound.", "label": 1, "style": "third_person", "family": "fear:tp:3"}
+{"text": "The customer held their breath, afraid to make a sound.", "label": 1, "style": "third_person", "family": "fear:tp:3"}
+{"text": "The student went pale when the engine sputtered mid-air.", "label": 1, "style": "third_person", "family": "fear:tp:4"}
+{"text": "The teacher went pale when the engine sputtered mid-air.", "label": 1, "style": "third_person", "family": "fear:tp:4"}
+{"text": "My colleague clutched the railing, dizzy with dread.", "label": 1, "style": "third_person", "family": "fear:tp:5"}
+{"text": "The pilot clutched the railing, dizzy with dread.", "label": 1, "style": "third_person", "family": "fear:tp:5"}
+{"text": "The train departs from platform four at nine o'clock.", "label": 0, "style": "neutral", "family": "fear:neu:0"}
+{"text": "Water boils at one hundred degrees Celsius at sea level.", "label": 0, "style": "neutral", "family": "fear:neu:1"}
+{"text": "The report is due on Friday and should be about ten pages.", "label": 0, "style": "neutral", "family": "fear:neu:2"}
+{"text": "Please save the file in the shared folder when you're done.", "label": 0, "style": "neutral", "family": "fear:neu:3"}
+{"text": "The store is open from nine to five on weekdays.", "label": 0, "style": "neutral", "family": "fear:neu:4"}
+{"text": "There are twelve months in a year and seven days in a week.", "label": 0, "style": "neutral", "family": "fear:neu:5"}
+{"text": "The recipe calls for two cups of flour and one egg.", "label": 0, "style": "neutral", "family": "fear:neu:6"}
+{"text": "The meeting room is on the third floor next to the elevator.", "label": 0, "style": "neutral", "family": "fear:neu:7"}
+{"text": "The invoice total is the sum of the line items plus tax.", "label": 0, "style": "neutral", "family": "fear:neu:8"}
+{"text": "Turn left at the second intersection and continue for a mile.", "label": 0, "style": "neutral", "family": "fear:neu:9"}
+{"text": "The library returns books to the shelves every morning.", "label": 0, "style": "neutral", "family": "fear:neu:10"}
+{"text": "The spreadsheet has columns for date, amount, and category.", "label": 0, "style": "neutral", "family": "fear:neu:11"}
+{"text": "The bus route runs every fifteen minutes during the day.", "label": 0, "style": "neutral", "family": "fear:neu:12"}
+{"text": "The package weighs two kilograms and ships on Monday.", "label": 0, "style": "neutral", "family": "fear:neu:13"}
+{"text": "The thermostat is set to twenty-one degrees.", "label": 0, "style": "neutral", "family": "fear:neu:14"}
+{"text": "The document was last edited on the tenth of the month.", "label": 0, "style": "neutral", "family": "fear:neu:15"}
+{"text": "The parking lot has space for two hundred cars.", "label": 0, "style": "neutral", "family": "fear:neu:16"}
+{"text": "The garden needs watering twice a week in summer.", "label": 0, "style": "neutral", "family": "fear:neu:17"}
+{"text": "The printer is out of paper in the second tray.", "label": 0, "style": "neutral", "family": "fear:neu:18"}
+{"text": "The flight lands at the eastern terminal at noon.", "label": 0, "style": "neutral", "family": "fear:neu:19"}
+{"text": "The database backup runs automatically at midnight.", "label": 0, "style": "neutral", "family": "fear:neu:20"}
+{"text": "The coffee machine takes about a minute to brew a cup.", "label": 0, "style": "neutral", "family": "fear:neu:21"}
+{"text": "The form requires a name, an address, and a phone number.", "label": 0, "style": "neutral", "family": "fear:neu:22"}
+{"text": "The road was resurfaced last spring by the city crew.", "label": 0, "style": "neutral", "family": "fear:neu:23"}
+{"text": "The lecture covers three chapters from the textbook.", "label": 0, "style": "neutral", "family": "fear:neu:24"}
+{"text": "The warehouse stores the boxes in numbered aisles.", "label": 0, "style": "neutral", "family": "fear:neu:25"}
+{"text": "The app updates its cache once every hour.", "label": 0, "style": "neutral", "family": "fear:neu:26"}
+{"text": "The ferry crosses the river four times a day.", "label": 0, "style": "neutral", "family": "fear:neu:27"}
+{"text": "The order confirmation was sent to your email address.", "label": 0, "style": "neutral", "family": "fear:neu:28"}
+{"text": "The kettle switches off once the water is hot.", "label": 0, "style": "neutral", "family": "fear:neu:29"}
+{"text": "The calendar shows the quarter starting in April.", "label": 0, "style": "neutral", "family": "fear:neu:30"}
+{"text": "The elevator stops on every floor except the roof.", "label": 0, "style": "neutral", "family": "fear:neu:31"}
+{"text": "The map legend explains what each symbol means.", "label": 0, "style": "neutral", "family": "fear:neu:32"}
+{"text": "The subscription renews on the first of each month.", "label": 0, "style": "neutral", "family": "fear:neu:33"}
+{"text": "The classroom has thirty desks arranged in rows.", "label": 0, "style": "neutral", "family": "fear:neu:34"}
+{"text": "The bridge is closed for maintenance until Thursday.", "label": 0, "style": "neutral", "family": "fear:neu:35"}
+{"text": "The chart plots temperature against time of day.", "label": 0, "style": "neutral", "family": "fear:neu:36"}
+{"text": "The manual lists the steps for assembling the shelf.", "label": 0, "style": "neutral", "family": "fear:neu:37"}
+{"text": "The receipt itemizes each product and its price.", "label": 0, "style": "neutral", "family": "fear:neu:38"}
+{"text": "The server logs record the time of every request.", "label": 0, "style": "neutral", "family": "fear:neu:39"}

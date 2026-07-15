@@ -1,0 +1,19 @@
+<svg viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg">
+<rect width="420" height="420" fill="#0f1117" rx="16"/>
+<g transform="rotate(0.80 210 210) translate(0 5.01) scale(0.9850)">
+  <ellipse cx="210" cy="212" rx="150" ry="172" fill="#e8b48c" stroke="#d79f77" stroke-width="2"/>
+  <ellipse cx="150" cy="250" rx="34" ry="22" fill="#f0c6a4" opacity="0.000"/>
+  <ellipse cx="270" cy="250" rx="34" ry="22" fill="#f0c6a4" opacity="0.000"/>
+  <ellipse cx="150" cy="182" rx="34" ry="24" fill="#fff"/>
+  <ellipse cx="270" cy="182" rx="34" ry="24" fill="#fff"/>
+  <circle cx="150.0" cy="182.0" r="12" fill="#2a2f3a"/><circle cx="270.0" cy="182.0" r="12" fill="#2a2f3a"/>
+  <path fill="#e8b48c" d="M 114 124 L 186 124 L 186 158.0 Q 150 167.0 114 158.0 Z"/><path fill="#e8b48c" d="M 234 124 L 306 124 L 306 158.0 Q 270 167.0 234 158.0 Z"/>
+  <path fill="#e8b48c" d="M 114 240 L 186 240 L 186 184.7 Q 150 177.7 114 184.7 Z"/><path fill="#e8b48c" d="M 234 240 L 306 240 L 306 184.7 Q 270 177.7 234 184.7 Z"/>
+  <ellipse cx="150" cy="182" rx="34" ry="24" fill="none" stroke="#d79f77" stroke-width="2"/>
+  <ellipse cx="270" cy="182" rx="34" ry="24" fill="none" stroke="#d79f77" stroke-width="2"/>
+  <path stroke="#5b3b28" stroke-width="8" stroke-linecap="round" fill="none" d="M 116 125.0 Q 154.5 115.0 193.0 137.5"/>
+  <path stroke="#5b3b28" stroke-width="8" stroke-linecap="round" fill="none" d="M 304 125.0 Q 265.5 115.0 227.0 133.1"/>
+  <path d="M210 196 q-10 40 -16 52 q8 8 22 0" fill="none" stroke="#d79f77" stroke-width="2"/>
+  <path fill="#b5473f" stroke="#8f3630" stroke-width="2" d="M 164 304.8 Q 210 303.2 256 304.8 Q 210 327.8 164 304.8 Z"/>
+</g><text x="210" y="404" text-anchor="middle" fill="#8a92a6" font-family="sans-serif" font-size="18">frustration  100</text>
+</svg>

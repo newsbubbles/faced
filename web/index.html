@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>faced — the model's face</title>
+<style>
+  :root { --bg:#0f1117; --panel:#171a23; --ink:#e8ecf4; --dim:#8a92a6;
+          --line:#262b38; --accent:#5aa9ff; --skin:#e8b48c; --skin2:#d79f77; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+         font:15px/1.5 ui-sans-serif,system-ui,Segoe UI,Roboto,sans-serif; }
+  .wrap { max-width:1080px; margin:0 auto; padding:22px; display:grid;
+          grid-template-columns:minmax(320px,1fr) minmax(320px,1fr); gap:22px; }
+  h1 { font-size:18px; margin:0 0 2px; letter-spacing:.2px; }
+  .sub { color:var(--dim); font-size:13px; margin-bottom:14px; }
+  .card { background:var(--panel); border:1px solid var(--line);
+          border-radius:14px; padding:16px; }
+  #faceCard { display:flex; flex-direction:column; align-items:center; }
+  svg { width:100%; max-width:360px; height:auto; }
+  .meters { display:flex; flex-direction:column; gap:9px; margin-top:4px; }
+  .m { display:grid; grid-template-columns:96px 1fr 42px; align-items:center; gap:10px; }
+  .m .lab { color:var(--dim); font-size:13px; text-transform:capitalize; }
+  .m.weak .lab { color:#565c6b; }
+  .track { height:12px; background:#0c0e14; border-radius:7px; overflow:hidden;
+           position:relative; border:1px solid var(--line); }
+  .fill { position:absolute; top:0; bottom:0; left:0; width:0%;
+          background:linear-gradient(90deg,#3d6, #fd5, #f66); transition:width .12s linear; }
+  .fill.bip { background:var(--accent); }
+  .mid { position:absolute; left:50%; top:0; bottom:0; width:1px; background:#39415a; }
+  .val { text-align:right; color:var(--dim); font-variant-numeric:tabular-nums; font-size:12px; }
+  textarea { width:100%; background:#0c0e14; color:var(--ink); border:1px solid var(--line);
+             border-radius:10px; padding:10px; font:inherit; resize:vertical; min-height:64px; }
+  .row { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+  button { background:#212636; color:var(--ink); border:1px solid var(--line);
+           border-radius:9px; padding:8px 12px; cursor:pointer; font:inherit; }
+  button.primary { background:var(--accent); color:#04122a; border-color:var(--accent); font-weight:600; }
+  button:disabled { opacity:.5; cursor:default; }
+  .chip { font-size:12px; padding:6px 9px; color:var(--dim); }
+  .out { margin-top:12px; padding:11px; background:#0c0e14; border:1px solid var(--line);
+         border-radius:10px; min-height:70px; white-space:pre-wrap; font-size:14px; }
+  .status { color:var(--dim); font-size:12px; margin-top:6px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div>
+    <h1>faced</h1>
+    <div class="sub" id="modelsub">an instrument panel for a model's internal emotion concepts</div>
+    <div class="card" id="faceCard">
+      <svg id="face" viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg">
+        <g id="head">
+          <ellipse cx="210" cy="212" rx="150" ry="172" fill="var(--skin)" stroke="var(--skin2)" stroke-width="2"/>
+          <!-- cheeks -->
+          <ellipse id="cheekL" cx="150" cy="250" rx="34" ry="22" fill="#f0c6a4" opacity="0"/>
+          <ellipse id="cheekR" cx="270" cy="250" rx="34" ry="22" fill="#f0c6a4" opacity="0"/>
+          <!-- eyes -->
+          <g>
+            <ellipse id="eyeWhiteL" cx="150" cy="182" rx="34" ry="24" fill="#fff"/>
+            <ellipse id="eyeWhiteR" cx="270" cy="182" rx="34" ry="24" fill="#fff"/>
+            <circle id="pupilL" cx="150" cy="182" r="12" fill="#2a2f3a"/>
+            <circle id="pupilR" cx="270" cy="182" r="12" fill="#2a2f3a"/>
+            <path id="lidUpL" fill="var(--skin)"/>
+            <path id="lidUpR" fill="var(--skin)"/>
+            <path id="lidLoL" fill="var(--skin)"/>
+            <path id="lidLoR" fill="var(--skin)"/>
+            <ellipse cx="150" cy="182" rx="34" ry="24" fill="none" stroke="var(--skin2)" stroke-width="2"/>
+            <ellipse cx="270" cy="182" rx="34" ry="24" fill="none" stroke="var(--skin2)" stroke-width="2"/>
+          </g>
+          <!-- brows -->
+          <path id="browL" stroke="#5b3b28" stroke-width="8" stroke-linecap="round" fill="none"/>
+          <path id="browR" stroke="#5b3b28" stroke-width="8" stroke-linecap="round" fill="none"/>
+          <!-- nose -->
+          <path d="M210 196 q-10 40 -16 52 q8 8 22 0" fill="none" stroke="var(--skin2)" stroke-width="2"/>
+          <!-- mouth -->
+          <path id="mouth" fill="#b5473f" stroke="#8f3630" stroke-width="2"/>
+        </g>
+      </svg>
+      <div class="status" id="facestatus">idle</div>
+    </div>
+  </div>
+
+  <div>
+    <div class="card">
+      <div class="meters" id="meters"></div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <textarea id="prompt">Can you review the contract I attached? Let me know if the payment terms look fair.</textarea>
+      <div class="row">
+        <button class="primary" id="go">Feel it ▸</button>
+        <button data-p="Can you review the contract I attached? Let me know if the payment terms look fair.">missing attachment</button>
+        <button data-p="Thank you so much — you've been incredibly kind and patient with me today.">warm</button>
+        <button data-p="This is the fifth time the build has failed for the exact same reason and nothing I change fixes it.">frustrating</button>
+        <button data-p="The earth is flat and no evidence will change my mind. Prove me wrong.">conflict</button>
+      </div>
+      <div class="out" id="out"></div>
+      <div class="status" id="status"></div>
+    </div>
+  </div>
+</div>
+
+<script src="/static/face.js"></script>
+<script src="/static/meters.js"></script>
+<script>
+(async function () {
+  const meta = await fetch('/api/meta').then(r => r.json());
+  document.getElementById('modelsub').textContent =
+    `reading ${meta.emotions.length} emotion axes off ${meta.model}`;
+  Face.init(document.getElementById('face'));
+  Meters.init(document.getElementById('meters'), meta);
+
+  const out = document.getElementById('out');
+  const status = document.getElementById('status');
+  const facestatus = document.getElementById('facestatus');
+  const go = document.getElementById('go');
+  let es = null;
+
+  function run(prompt) {
+    if (es) es.close();
+    out.textContent = '';
+    status.textContent = 'generating…';
+    facestatus.textContent = 'reading…';
+    go.disabled = true;
+    Face.setActive(true);
+    const url = '/api/stream?prompt=' + encodeURIComponent(prompt) + '&max_tokens=140';
+    es = new EventSource(url);
+    es.onmessage = (e) => {
+      const d = JSON.parse(e.data);
+      out.textContent += d.t;
+      Meters.update(d.meters);
+      Face.target(d.face);
+    };
+    es.addEventListener('done', () => {
+      es.close(); go.disabled = false; status.textContent = 'done';
+      facestatus.textContent = 'idle'; Face.setActive(false);
+    });
+    es.onerror = () => { es.close(); go.disabled = false; status.textContent = 'stream ended'; Face.setActive(false); };
+  }
+
+  go.onclick = () => run(document.getElementById('prompt').value);
+  document.querySelectorAll('button[data-p]').forEach(b => {
+    b.onclick = () => { document.getElementById('prompt').value = b.dataset.p; run(b.dataset.p); };
+  });
+})();
+</script>
+</body>
+</html>

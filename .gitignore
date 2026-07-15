@@ -1,0 +1,38 @@
+# ── secrets — never commit ─────────────────────────────
+.env
+runpod/.ssh/
+
+# ── internal / working notes (not for the public repo) ──
+HANDOFF.md
+notes/
+CLAUDE.md
+.claude/
+**/.claude/
+
+# ── large model weights & activation caches ────────────
+models/
+data/activations/
+config/models.local.yaml
+artifacts/pod_id.txt
+
+# ── run-output binary tensors ──────────────────────────
+# Regenerable from the released code + prompt sets. Large trained
+# artifacts (SAE weights, fitted direction tensors) are hosted
+# separately (Hugging Face / Drive) rather than bloating the repo.
+*.safetensors
+
+# ── duplicate scratch run dirs ─────────────────────────
+# Canonical figures/reports live in artifacts/{abliteration,scaling}.
+artifacts/_ladder/
+artifacts/_randctl/
+
+# ── paper build intermediates (regenerate with paper/build.py) ──
+paper/_pandoc.md
+paper/_prev_*.png
+paper/_style.html
+paper/paper.html
+
+# ── python ─────────────────────────────────────────────
+__pycache__/
+*.pyc
+.venv/

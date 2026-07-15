@@ -1,0 +1,14 @@
+# Local dev (M0-M4). torch is assumed preinstalled with CUDA; install to match your box.
+transformers>=5.4
+safetensors>=0.4
+huggingface_hub>=0.24
+scikit-learn>=1.3
+numpy>=1.26
+einops>=0.7
+pyyaml>=6.0
+fastapi>=0.109
+uvicorn>=0.27
+matplotlib>=3.8
+
+# RunPod / Gemma-4 (M5): transformers>=5.5 required for model_type gemma4.
+# SAE phase additionally wants: sae_lens  (installed in runpod/setup.sh)

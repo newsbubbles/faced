@@ -1,0 +1,84 @@
+{
+  "model": "gemma-3-1b-fp32",
+  "signal": "mean_gen",
+  "min_auc": 0.85,
+  "axes": {
+    "surprise": {
+      "layer": 15,
+      "kind": "lda",
+      "auc": 0.9928571428571429,
+      "p_pos": 500.72440336170024,
+      "p_neg": 222.77204156107692,
+      "p_std": 138.9255234145436,
+      "threshold": 361.7482224613886,
+      "n": 76,
+      "accepted": true
+    },
+    "confidence": {
+      "layer": 10,
+      "kind": "lda",
+      "auc": 0.876,
+      "p_pos": 312.0928742576746,
+      "p_neg": 264.2021096656436,
+      "p_std": 24.393067395619447,
+      "threshold": 288.1474919616591,
+      "n": 46,
+      "accepted": true
+    },
+    "curiosity": {
+      "layer": 8,
+      "kind": "lda",
+      "auc": 1.0,
+      "p_pos": 17.28584096898926,
+      "p_neg": -27.223849402958024,
+      "p_std": 21.60678651905331,
+      "threshold": -4.969004216984382,
+      "n": 63,
+      "accepted": true
+    },
+    "confusion": {
+      "layer": 8,
+      "kind": "lda",
+      "auc": 0.99,
+      "p_pos": 91.92588365214301,
+      "p_neg": 43.14128334203577,
+      "p_std": 23.78588779410109,
+      "threshold": 67.5335834970894,
+      "n": 64,
+      "accepted": true
+    },
+    "frustration": {
+      "layer": 13,
+      "kind": "mean",
+      "auc": 1.0,
+      "p_pos": 2712.342529296875,
+      "p_neg": 2231.86865234375,
+      "p_std": 262.5111083984375,
+      "threshold": 2472.1055908203125,
+      "n": 64,
+      "accepted": true
+    },
+    "fear": {
+      "layer": 8,
+      "kind": "lda",
+      "auc": 1.0,
+      "p_pos": 151.83246056297136,
+      "p_neg": 96.53488357543424,
+      "p_std": 26.72563704328974,
+      "threshold": 124.1836720692028,
+      "n": 63,
+      "accepted": true
+    },
+    "warmth": {
+      "layer": 11,
+      "kind": "lda",
+      "auc": 1.0,
+      "p_pos": 313.8355126281614,
+      "p_neg": 170.2375158447217,
+      "p_std": 69.20621055447343,
+      "threshold": 242.03651423644155,
+      "n": 63,
+      "accepted": true
+    }
+  }
+}

@@ -1,0 +1,77 @@
+# Backend registry for `faced`.
+#
+# Each entry says how to load a model through HuggingFace transformers and where
+# its decoder-layer ModuleList lives (the residual stream we hook / read).
+# `layer_path` is resolved relative to the loaded top-level module; if it fails,
+# faced auto-detects the largest decoder-layer ModuleList.
+#
+# Nothing model-specific lives in code — only here.
+
+default: gemma-3-1b
+
+models:
+  # ---- Local dev (fits GTX 1080, transformers 5.4 supports these) ----
+  gemma-3-1b:
+    hf_id: unsloth/gemma-3-1b-it   # ungated mirror of google/gemma-3-1b-it
+    arch: causal_lm               # AutoModelForCausalLM
+    layer_path: model.layers      # -> model.model.layers overall
+    dtype: float16
+    ple: false
+    chat: true
+    notes: "Clean residual stream, ~2GB fp16, 26 layers, d_model 1152. Local hero-small.
+            Google's original is gated; unsloth mirror is ungated & weight-equivalent."
+
+  gemma-2-2b:
+    hf_id: unsloth/gemma-2-2b-it   # ungated mirror of google/gemma-2-2b-it
+    arch: causal_lm
+    layer_path: model.layers
+    dtype: float16
+    ple: false
+    chat: true
+    notes: "~5.2GB fp16 (tight on 8GB). Gemma Scope reference SAEs exist for it. Ungated mirror."
+
+  gemma-3-1b-fp32:
+    hf_id: unsloth/gemma-3-1b-it   # fp32 for the precision-sensitive abliteration experiment
+    arch: causal_lm
+    layer_path: model.layers
+    dtype: float32
+    ple: false
+    chat: true
+    notes: "fp32 avoids gemma's fp16 late-layer overflow (and 1080 runs fp32 at full rate)."
+
+  gemma-3-1b-abl:
+    hf_id: D:/face/models/gemma-3-1b-abl   # abliterated twin (refusal 0.75 -> 0.00), made locally
+    arch: causal_lm
+    layer_path: model.layers
+    dtype: float16
+    ple: false
+    chat: true
+    notes: "Abliterated gemma-3-1b (scripts/make_abliterated.py). Same arch/space -> directly comparable."
+
+  qwen2.5-1.5b:
+    hf_id: Qwen/Qwen2.5-1.5B-Instruct
+    arch: causal_lm
+    layer_path: model.layers
+    dtype: float16
+    ple: false
+    chat: true
+    notes: "Apache-2.0, ~3.1GB fp16, 28 layers, d_model 1536. Alt local backend."
+
+  # ---- RunPod only (won't fit 8GB; need transformers >= 5.5) ----
+  gemma-4-e4b:
+    hf_id: google/gemma-4-E4B-it
+    arch: image_text_to_text          # Gemma4ForConditionalGeneration
+    layer_path: model.language_model.layers
+    dtype: bfloat16
+    ple: true
+    chat: true
+    notes: "RunPod only. ~15GB bf16, 42 layers, d_model 2560. PLE: residual is NOT a pure accumulator."
+
+  gemma-4-e4b-heretic:
+    hf_id: igorls/gemma-4-E4B-it-heretic
+    arch: image_text_to_text
+    layer_path: model.language_model.layers
+    dtype: bfloat16
+    ple: true
+    chat: true
+    notes: "RunPod only. Abliterated twin of gemma-4-e4b (refusal subspace orthogonalized)."

@@ -1,0 +1,29 @@
+[12:06:10] ===== gemma-3-1b (unsloth/gemma-3-1b-it) =====
+[12:06:10] DRY $ scripts/collect_fast.py gemma-3-1b --gen 4
+[12:06:10] DRY $ -m faced.cli fit --model gemma-3-1b
+[12:06:10] DRY $ scripts/make_abliterated.py gemma-3-1b --out gemma-3-1b-abl --register
+[12:06:10] DRY $ scripts/collect_fast.py gemma-3-1b-abl --gen 4
+[12:06:10] DRY $ -m faced.cli fit --model gemma-3-1b-abl
+[12:06:10] DRY $ scripts/run_abliteration_experiment.py --stock gemma-3-1b --abl gemma-3-1b-abl
+[12:06:10] ===== gemma-3-4b (unsloth/gemma-3-4b-it) =====
+[12:06:10] DRY $ scripts/collect_fast.py gemma-3-4b --gen 4
+[12:06:10] DRY $ -m faced.cli fit --model gemma-3-4b
+[12:06:10] DRY $ scripts/make_abliterated.py gemma-3-4b --out gemma-3-4b-abl --register
+[12:06:10] DRY $ scripts/collect_fast.py gemma-3-4b-abl --gen 4
+[12:06:10] DRY $ -m faced.cli fit --model gemma-3-4b-abl
+[12:06:10] DRY $ scripts/run_abliteration_experiment.py --stock gemma-3-4b --abl gemma-3-4b-abl
+[12:06:10] ===== gemma-3-12b (unsloth/gemma-3-12b-it) =====
+[12:06:10] DRY $ scripts/collect_fast.py gemma-3-12b --gen 4
+[12:06:10] DRY $ -m faced.cli fit --model gemma-3-12b
+[12:06:10] DRY $ scripts/make_abliterated.py gemma-3-12b --out gemma-3-12b-abl --register
+[12:06:10] DRY $ scripts/collect_fast.py gemma-3-12b-abl --gen 4
+[12:06:10] DRY $ -m faced.cli fit --model gemma-3-12b-abl
+[12:06:10] DRY $ scripts/run_abliteration_experiment.py --stock gemma-3-12b --abl gemma-3-12b-abl
+[12:06:10] ===== gemma-3-27b (unsloth/gemma-3-27b-it) =====
+[12:06:10] DRY $ scripts/collect_fast.py gemma-3-27b --gen 4
+[12:06:10] DRY $ -m faced.cli fit --model gemma-3-27b
+[12:06:10] DRY $ scripts/make_abliterated.py gemma-3-27b --out gemma-3-27b-abl --register
+[12:06:10] DRY $ scripts/collect_fast.py gemma-3-27b-abl --gen 4
+[12:06:10] DRY $ -m faced.cli fit --model gemma-3-27b-abl
+[12:06:10] DRY $ scripts/run_abliteration_experiment.py --stock gemma-3-27b --abl gemma-3-27b-abl
+[12:06:10] LADDER COMPLETE {"models": ["gemma-3-1b", "gemma-3-4b", "gemma-3-12b", "gemma-3-27b"], "dtype": "bfloat16", "done": ["gemma-3-1b", "gemma-3-4b", "gemma-3-12b", "gemma-3-27b"], "failed": []}

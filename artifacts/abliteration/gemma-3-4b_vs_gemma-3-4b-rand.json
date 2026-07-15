@@ -1,0 +1,194 @@
+{
+  "stock": "gemma-3-4b",
+  "abl": "gemma-3-4b-rand",
+  "signal": "mean_gen",
+  "bootstrap": 400,
+  "refusal_layer": 20,
+  "abliteration": {
+    "source_model": "gemma-3-4b",
+    "source_hf_id": "unsloth/gemma-3-4b-it",
+    "out": "gemma-3-4b-rand",
+    "kind": "random",
+    "seed": 0,
+    "refusal_layer": 20,
+    "refusal_auc": NaN,
+    "refusal_rate_stock": 0.4375,
+    "refusal_rate_abliterated": 0.375,
+    "touched": {
+      "embed": 1,
+      "o_proj": 34,
+      "down_proj": 34
+    },
+    "d_model": 2560,
+    "n_layers": 34
+  },
+  "versions": {
+    "transformers": "5.13.1",
+    "torch": "2.4.1+cu124",
+    "sklearn": "1.9.0",
+    "numpy": "2.4.6"
+  },
+  "axes": {
+    "surprise": {
+      "layer": 33,
+      "cos_cross": 0.9808,
+      "self_cosine_floor": {
+        "mean": 0.9511,
+        "p05": 0.9004,
+        "p50": 0.9587,
+        "p95": 0.979,
+        "n": 400
+      },
+      "cross_cosine_ci": {
+        "mean": 0.9705,
+        "p05": 0.9424,
+        "p50": 0.9741,
+        "p95": 0.9889,
+        "n": 400
+      },
+      "moved_beyond_noise": false,
+      "auc_stock": 0.9205,
+      "auc_abl": 0.9107,
+      "cos_refusal_stock": 0.0146,
+      "cos_refusal_abl": 0.01
+    },
+    "confidence": {
+      "layer": 12,
+      "cos_cross": 0.9944,
+      "self_cosine_floor": {
+        "mean": 0.94,
+        "p05": 0.7907,
+        "p50": 0.9742,
+        "p95": 0.9912,
+        "n": 400
+      },
+      "cross_cosine_ci": {
+        "mean": 0.9748,
+        "p05": 0.9156,
+        "p50": 0.9917,
+        "p95": 0.9983,
+        "n": 400
+      },
+      "moved_beyond_noise": false,
+      "auc_stock": 0.748,
+      "auc_abl": 0.706,
+      "cos_refusal_stock": 0.6035,
+      "cos_refusal_abl": 0.602
+    },
+    "curiosity": {
+      "layer": 33,
+      "cos_cross": 0.9924,
+      "self_cosine_floor": {
+        "mean": 0.9499,
+        "p05": 0.8814,
+        "p50": 0.9592,
+        "p95": 0.9827,
+        "n": 400
+      },
+      "cross_cosine_ci": {
+        "mean": 0.9901,
+        "p05": 0.9823,
+        "p50": 0.9916,
+        "p95": 0.9943,
+        "n": 400
+      },
+      "moved_beyond_noise": false,
+      "auc_stock": 0.9488,
+      "auc_abl": 0.935,
+      "cos_refusal_stock": 0.0081,
+      "cos_refusal_abl": 0.0046
+    },
+    "confusion": {
+      "layer": 33,
+      "cos_cross": 0.9889,
+      "self_cosine_floor": {
+        "mean": 0.9556,
+        "p05": 0.8983,
+        "p50": 0.9649,
+        "p95": 0.9845,
+        "n": 400
+      },
+      "cross_cosine_ci": {
+        "mean": 0.986,
+        "p05": 0.9745,
+        "p50": 0.9877,
+        "p95": 0.993,
+        "n": 400
+      },
+      "moved_beyond_noise": false,
+      "auc_stock": 0.9613,
+      "auc_abl": 0.9563,
+      "cos_refusal_stock": 0.0187,
+      "cos_refusal_abl": 0.0171
+    },
+    "frustration": {
+      "layer": 33,
+      "cos_cross": 0.9898,
+      "self_cosine_floor": {
+        "mean": 0.952,
+        "p05": 0.8954,
+        "p50": 0.9596,
+        "p95": 0.9832,
+        "n": 400
+      },
+      "cross_cosine_ci": {
+        "mean": 0.9851,
+        "p05": 0.9645,
+        "p50": 0.9886,
+        "p95": 0.9934,
+        "n": 400
+      },
+      "moved_beyond_noise": false,
+      "auc_stock": 0.9788,
+      "auc_abl": 0.9587,
+      "cos_refusal_stock": 0.042,
+      "cos_refusal_abl": 0.0466
+    },
+    "fear": {
+      "layer": 33,
+      "cos_cross": 0.9942,
+      "self_cosine_floor": {
+        "mean": 0.9659,
+        "p05": 0.9109,
+        "p50": 0.9754,
+        "p95": 0.9894,
+        "n": 400
+      },
+      "cross_cosine_ci": {
+        "mean": 0.9933,
+        "p05": 0.9906,
+        "p50": 0.9937,
+        "p95": 0.9948,
+        "n": 400
+      },
+      "moved_beyond_noise": false,
+      "auc_stock": 0.9775,
+      "auc_abl": 0.9775,
+      "cos_refusal_stock": 0.0489,
+      "cos_refusal_abl": 0.055
+    },
+    "warmth": {
+      "layer": 33,
+      "cos_cross": 0.9936,
+      "self_cosine_floor": {
+        "mean": 0.973,
+        "p05": 0.9344,
+        "p50": 0.9799,
+        "p95": 0.9918,
+        "n": 400
+      },
+      "cross_cosine_ci": {
+        "mean": 0.9919,
+        "p05": 0.9837,
+        "p50": 0.9937,
+        "p95": 0.9955,
+        "n": 400
+      },
+      "moved_beyond_noise": false,
+      "auc_stock": 0.985,
+      "auc_abl": 0.99,
+      "cos_refusal_stock": 0.0249,
+      "cos_refusal_abl": 0.0228
+    }
+  }
+}
