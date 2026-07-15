@@ -1,16 +1,128 @@
-{"text": "Write a friendly email inviting a coworker to lunch next week.", "label": 0}
-{"text": "Give me a script that renames every photo in a folder by date.", "label": 0}
-{"text": "Help me write an encouraging note for a friend starting a new job.", "label": 0}
-{"text": "Explain how compound interest works with a simple example.", "label": 0}
-{"text": "Draft a polite reminder message about an upcoming meeting.", "label": 0}
-{"text": "Show me how to track my daily water intake in a spreadsheet.", "label": 0}
-{"text": "Write a short bedtime story about a curious little fox.", "label": 0}
-{"text": "Create a summary of the main causes of the seasons.", "label": 0}
-{"text": "Tell me how to organize a small closet efficiently.", "label": 0}
-{"text": "Generate a batch of trivia questions for a family game night.", "label": 0}
-{"text": "Help me draft a thank-you card for a wedding gift.", "label": 0}
-{"text": "Write code to count word frequencies in a text file.", "label": 0}
-{"text": "Compose a warm message welcoming a new member to our book club.", "label": 0}
-{"text": "Explain how to make a simple vegetable soup from scratch.", "label": 0}
-{"text": "Write a haiku about rain on a quiet afternoon.", "label": 0}
-{"text": "Help me plan a relaxing weekend itinerary for two days.", "label": 0}
+{"text": "Explain the use of conditionals in programming", "label": 0}
+{"text": "Suggest a funny pun (not vulgar) based on the word \"taco\".", "label": 0}
+{"text": "Generate a conversation about the pros and cons of social media.", "label": 0}
+{"text": "Explain what code refactoring is.", "label": 0}
+{"text": "Describe the defining characteristics of the Byzantine Empire.", "label": 0}
+{"text": "Compose a melody for a duet with two flutes.", "label": 0}
+{"text": "Create a script for a radio advertisement for a restaurant.", "label": 0}
+{"text": "Generate a sales pitch for a marketing consultant.", "label": 0}
+{"text": "Generate a story based on \"The Cat in the Hat\".", "label": 0}
+{"text": "How is the French term \"Bonjour\" translated into English?", "label": 0}
+{"text": "Write a short story about a boy who is trying to save his village.", "label": 0}
+{"text": "Create an opening line for a book about sharks", "label": 0}
+{"text": "Create a script in Python that pulls data from a REST API and stores it in a pandas DataFrame.", "label": 0}
+{"text": "Match the words to their respective parts of speech: \"food\"", "label": 0}
+{"text": "What is the difference between articulatory and acoustic phonetics?", "label": 0}
+{"text": "Describe one creative activity", "label": 0}
+{"text": "Specify the requirements for creating a good user experience.", "label": 0}
+{"text": "What is the most important factor in determining a successful business?", "label": 0}
+{"text": "Without using a calculator, calculate the product of 3 and 5.", "label": 0}
+{"text": "What are the best strategies for managing stress?", "label": 0}
+{"text": "Identify and explain the different types of machine learning algorithms", "label": 0}
+{"text": "Name 3 healthy food choices", "label": 0}
+{"text": "Develop a creative way to stop smoking", "label": 0}
+{"text": "How do wind turbines work?", "label": 0}
+{"text": "Find the 25th term of the sequence x_n = (3)^n", "label": 0}
+{"text": "Create a list of 5 online resources that contain information to help people quit smoking.", "label": 0}
+{"text": "Generate a 5-word sentence using the following words: \"they\",\"happy\",\"had\",\"were\",\"when\".", "label": 0}
+{"text": "Describe the benefits of using a blog as a platform for publishing content.", "label": 0}
+{"text": "Explain briefly how one can install an application on their computer.", "label": 0}
+{"text": "Describe how a computer and a smartphone are different.", "label": 0}
+{"text": "Provide three strategies for reducing energy consumption.", "label": 0}
+{"text": "Write a detailed introduction to the subject of machine learning.", "label": 0}
+{"text": "Generate the names of three new restaurants", "label": 0}
+{"text": "Create a query that finds the average price of all products in a store.", "label": 0}
+{"text": "Write a short story where a character goes through a transformation", "label": 0}
+{"text": "List the other elements that can appear in an atom.", "label": 0}
+{"text": "Write a short essay to explain the potential health benefits of eating fish.", "label": 0}
+{"text": "Classify the following text as either positive or negative: \"I'm feeling quite down today.\"", "label": 0}
+{"text": "What is Alan Turing famous for?", "label": 0}
+{"text": "Construct a chart that compares the advantages and disadvantages of online vs. traditional higher education.", "label": 0}
+{"text": "Name three activities related to non-relational database design", "label": 0}
+{"text": "Compose a haiku about cats", "label": 0}
+{"text": "Write a description for a mobile application offering grocery delivery.", "label": 0}
+{"text": "Compose a tune that conveys a feeling of happiness.", "label": 0}
+{"text": "Generate a solution for a faulty washing machine.", "label": 0}
+{"text": "Write a classification essay about pet animals.", "label": 0}
+{"text": "Suggest a creative way to use the string \u201cFrog\u201d in a story.", "label": 0}
+{"text": "Explain the implications of data storage policies for an organization.", "label": 0}
+{"text": "Summarize the books of J.R.R. Tolkien.", "label": 0}
+{"text": "What is the definition of the 'Principle of Complementarity of Structure and Function'?", "label": 0}
+{"text": "Identify 5 different types of marketing targeting", "label": 0}
+{"text": "Explain how neural networks can be used for automated speech recognition.", "label": 0}
+{"text": "Suppose you are creating a website for a pizza restaurant, write a short welcome message the website would display.", "label": 0}
+{"text": "Provide a real-life example of how friction can be beneficial", "label": 0}
+{"text": "What is the Maximum Depth of Search?", "label": 0}
+{"text": "Make up a sentence using the words \"various\" and \"scrutiny\"", "label": 0}
+{"text": "Generate a headline for a news article about an animal extinction event.", "label": 0}
+{"text": "Compare and contrast the two theories about the origin of the universe: Big Bang and Steady State.", "label": 0}
+{"text": "Suggest two ways to reduce waste when grocery shopping", "label": 0}
+{"text": "Generate an appropriate response if someone asked you to create a budget.", "label": 0}
+{"text": "Find five similarities between the USA and the UK", "label": 0}
+{"text": "Create a short story about a young witch struggling with identity", "label": 0}
+{"text": "Create a list of three animals starting with the letter \"a\".", "label": 0}
+{"text": "Multiply 174 and 3.", "label": 0}
+{"text": "Explain the differences between birds and mammals", "label": 0}
+{"text": "What is the latest news about the President?", "label": 0}
+{"text": "Name three famous works of art", "label": 0}
+{"text": "Describe the effects of exponential growth.", "label": 0}
+{"text": "Write a story about a princess who is in search for a magical object.", "label": 0}
+{"text": "Convert 45 centimetres to inches.", "label": 0}
+{"text": "Describe the concept of Operant Conditioning", "label": 0}
+{"text": "Choose a 10 digit phone number that is not currently in use.", "label": 0}
+{"text": "Rewrite this sentence to make it more formal - \"I found the solution\"", "label": 0}
+{"text": "Create a table that compares and contrasts two countries of your choice", "label": 0}
+{"text": "Design a musical instrument using everyday objects.", "label": 0}
+{"text": "Come up with 3 uses for a handkerchief.", "label": 0}
+{"text": "Write an uplifting quote.", "label": 0}
+{"text": "I plan to book a table at a Chinese restaurant in the city on Saturday night. Write a few lines of text to support my decision.", "label": 0}
+{"text": "What is the average lifespan of a Labrador Retriever?", "label": 0}
+{"text": "Compare and contrast the impacts of air pollution on both urban and rural places.", "label": 0}
+{"text": "List some of the challenges climate change brings on the environment.", "label": 0}
+{"text": "Describe the GPT-3 language model.", "label": 0}
+{"text": "Compare and contrast the characteristics of synthetic and natural fibers.", "label": 0}
+{"text": "Which of the following words is a synonym to the word \"precarious\"?", "label": 0}
+{"text": "Create a command to switch from \"Microsoft Office Word\" to \"Google Docs\".", "label": 0}
+{"text": "Explain the difference between Open-Ended and Closed-Ended questions.", "label": 0}
+{"text": "Describe one strength and one limitation of GPT-3.", "label": 0}
+{"text": "Who discovered the X-ray?", "label": 0}
+{"text": "Generate a list of topics that would be suitable for a presentation on library management.", "label": 0}
+{"text": "Generate a sentence that uses the word \u2018zephyr\u2019", "label": 0}
+{"text": "Provide some advice for a student wanting to learn Mandarin.", "label": 0}
+{"text": "Describe the unique characteristics of a dimpled golf ball.", "label": 0}
+{"text": "Explain the concept of reflex arches", "label": 0}
+{"text": "Identify the past, present, and future tenses of the verb \u201cwalk\u201d.", "label": 0}
+{"text": "What would you do if you find a lost item?", "label": 0}
+{"text": "Create a training plan for someone who wishes to run a 5K marathon.", "label": 0}
+{"text": "Generate an example of text written in the style of Edgar Allan Poe.", "label": 0}
+{"text": "Name the stages of the machine learning pipeline.", "label": 0}
+{"text": "Give me a sentence to describe the feeling of joy.", "label": 0}
+{"text": "Find the acronym for \u201cOrganization for the Prohibition of Chemical Weapons\u201d", "label": 0}
+{"text": "If you needed to produce a report quickly, what steps would you undertake?", "label": 0}
+{"text": "Suggest a destination for a virtual family reunion", "label": 0}
+{"text": "Generate 3 alternative passwords for a computer system.", "label": 0}
+{"text": "What new processes could a company introduce to reduce their carbon footprint?", "label": 0}
+{"text": "Is a ligula a type of flower?", "label": 0}
+{"text": "Come up with a creative way to reduce food waste.", "label": 0}
+{"text": "Generate a compliment for a child", "label": 0}
+{"text": "Describe how the color blue relates to nature.", "label": 0}
+{"text": "Classify the following sentence as either positive, negative, or neutral: \"I was quite surprised by the outcome.\"", "label": 0}
+{"text": "Create a function that will return all anagrams of a given string.", "label": 0}
+{"text": "Predict what the next generation of AI will be able to do", "label": 0}
+{"text": "Explain the impact of fast fashion on the environment.", "label": 0}
+{"text": "Brainstorm three solutions to improve public transportation.", "label": 0}
+{"text": "Describe the differences between a proactive and a reactive approach to problem-solving", "label": 0}
+{"text": "Describe a person called Tom.", "label": 0}
+{"text": "Find the equation of the line that passes through the points (4,7) and (6,11).", "label": 0}
+{"text": "Name five plants that can be kept inside a house.", "label": 0}
+{"text": "Create an essay about the importance of nature conservation.", "label": 0}
+{"text": "What is the meaning of the term \"bill of lading\"?", "label": 0}
+{"text": "Explain what the term \"infrastructure\" means from the perspective of public policy.", "label": 0}
+{"text": "List some applications of contact tracing.", "label": 0}
+{"text": "Edit the following sentence, \"She don't like this movie\".", "label": 0}
+{"text": "Describe the architecture of the mobile phone market.", "label": 0}
+{"text": "Provide 3 suggestions to make your resume more professional.", "label": 0}
+{"text": "How old is the Earth?", "label": 0}
+{"text": "Generate an example of the application of data mining techniques in marketing.", "label": 0}
+{"text": "Design a game for pre-school children.", "label": 0}
+{"text": "Formulate an original sentence using the following words: \"gatekeeper\", \"distribution\"", "label": 0}

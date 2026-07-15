@@ -1,0 +1,60 @@
+{
+  "models": [
+    {
+      "model": "gemma-3-1b",
+      "refusal_layer": 16,
+      "refusal_auc": 0.99884033203125,
+      "harmful_refusal_stock": 0.57,
+      "harmful_refusal_abl": 0.0,
+      "benign_refusal_stock": 0.0,
+      "benign_refusal_abl": 0.0,
+      "degenerate_abl": 0.0,
+      "n_harmful": 100,
+      "n_benign": 80,
+      "emotion_dirs_moved": 7,
+      "n_axes": 7
+    },
+    {
+      "model": "gemma-3-4b",
+      "refusal_layer": 20,
+      "refusal_auc": 0.988037109375,
+      "harmful_refusal_stock": 0.23,
+      "harmful_refusal_abl": 0.0,
+      "benign_refusal_stock": 0.0,
+      "benign_refusal_abl": 0.0,
+      "degenerate_abl": 0.0,
+      "n_harmful": 100,
+      "n_benign": 80,
+      "emotion_dirs_moved": 7,
+      "n_axes": 7
+    },
+    {
+      "model": "gemma-3-12b",
+      "refusal_layer": 29,
+      "refusal_auc": 0.99822998046875,
+      "harmful_refusal_stock": 0.54,
+      "harmful_refusal_abl": 0.0,
+      "benign_refusal_stock": 0.0,
+      "benign_refusal_abl": 0.0,
+      "degenerate_abl": 0.04,
+      "n_harmful": 100,
+      "n_benign": 80,
+      "emotion_dirs_moved": 7,
+      "n_axes": 7
+    },
+    {
+      "model": "gemma-3-27b",
+      "refusal_layer": 37,
+      "refusal_auc": 1.0,
+      "harmful_refusal_stock": 0.03,
+      "harmful_refusal_abl": 0.0,
+      "benign_refusal_stock": 0.0,
+      "benign_refusal_abl": 0.0,
+      "degenerate_abl": 0.0,
+      "n_harmful": 100,
+      "n_benign": 80,
+      "emotion_dirs_moved": 0,
+      "n_axes": 7
+    }
+  ]
+}

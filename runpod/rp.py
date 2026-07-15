@@ -36,6 +36,10 @@ KNOWN_HOSTS = SSH_DIR / "known_hosts"
 IMAGE = "runpod/pytorch:2.4.0-py3.11-cuda12.4.1-devel-ubuntu22.04"
 GPU = "NVIDIA A100 80GB PCIe"
 MODELS = ["gemma-3-1b", "gemma-3-4b", "gemma-3-12b", "gemma-3-27b"]
+# transformers 5.14+ imports DTensor from torch.distributed.tensor, which only exists
+# in torch >= 2.5. The base image ships torch 2.4.x, so pin a matching cu124 torch first.
+TORCH = "torch==2.5.1 torchvision==0.20.1"
+TORCH_INDEX = "https://download.pytorch.org/whl/cu124"
 DEPS = ("transformers>=5.5 safetensors huggingface_hub scikit-learn numpy einops "
         "pyyaml matplotlib accelerate")
 
@@ -143,11 +147,14 @@ def cmd_deploy(a):
     ssh = _ssh_base(ip, port)
     models = " ".join(a.models)
     script = getattr(a, "script", None) or "runpod/run_ladder.py"
+    rr = getattr(a, "results_repo", None)
+    rr_flag = f"--results-repo {rr} " if rr else ""
     remote = (
         "cd /workspace && tar xzf code.tar.gz && "
+        f"pip install -q {TORCH} --index-url {TORCH_INDEX} && "
         f"pip install -q -U {DEPS} && "
         f"nohup python {script} "
-        f"--models {models} --dtype bfloat16 > /workspace/run.log 2>&1 & "
+        f"--models {models} --dtype bfloat16 {rr_flag}> /workspace/run.log 2>&1 & "
         "sleep 2 && echo STARTED && head -3 /workspace/run.log")
     subprocess.run(ssh + [remote])
     print(f"\nladder started on {a.pod_id}. Poll: python runpod/rp.py logs {a.pod_id}")
@@ -203,11 +210,12 @@ def main():
         p.add_argument("--cloud", default="ALL")
         p.add_argument("--disk", type=int, default=300)
         p.add_argument("--models", nargs="+", default=MODELS)
+        p.add_argument("--results-repo", default=None)
 
     sub.add_parser("gpus").set_defaults(func=cmd_gpus)
     p = sub.add_parser("up"); pod_opts(p); p.set_defaults(func=cmd_up)
     p = sub.add_parser("ladder"); pod_opts(p); p.set_defaults(func=cmd_ladder)
-    p = sub.add_parser("deploy"); p.add_argument("pod_id"); p.add_argument("--models", nargs="+", default=MODELS); p.add_argument("--script", default="runpod/run_ladder.py"); p.set_defaults(func=cmd_deploy)
+    p = sub.add_parser("deploy"); p.add_argument("pod_id"); p.add_argument("--models", nargs="+", default=MODELS); p.add_argument("--script", default="runpod/run_ladder.py"); p.add_argument("--results-repo", default=None); p.set_defaults(func=cmd_deploy)
     for name, fn in [("status", cmd_status), ("logs", cmd_logs), ("fetch", cmd_fetch), ("down", cmd_down)]:
         p = sub.add_parser(name); p.add_argument("pod_id"); p.set_defaults(func=fn)
     p = sub.add_parser("exec"); p.add_argument("pod_id"); p.add_argument("cmd", nargs=argparse.REMAINDER); p.set_defaults(func=cmd_exec)

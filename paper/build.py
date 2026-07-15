@@ -25,13 +25,20 @@ FIGS = [  # (anchor substring to insert BEFORE, image path, caption)
      ART / "scaling" / "cleanliness.png",
      "**Figure 4.** Signal cleanliness vs. model scale (`gemma-3` 1B–27B). d′ (centre) brightens "
      "with scale; the bipolar confidence axis is noisiest at every size."),
-    ("**7.3 Why: emotions are nearly orthogonal",
+    ("**7.2 On the 1B model",
+     ART / "behavioral" / "behavioral.png",
+     "**Figure 6.** Held-out behavioural confirmation across the `gemma-3` ladder. *Left:* abliteration "
+     "drives the harmful-prompt refusal rate to zero at every scale (AdvBench; stock in blue, "
+     "abliterated at 0). *Right:* it does so without inducing benign over-refusal or output "
+     "degeneration."),
+    ("**7.3 Why it moves",
      ART / "abliteration" / "gemma-3-1b-fp32_vs_gemma-3-1b-fp32-abl.png",
-     "**Figure 3.** Abliteration on `gemma-3-1b` (fp32): every stock↔abliterated cosine (red) sits "
-     "inside the within-model self-cosine band (grey); emotion↔refusal overlap is low throughout."),
+     "**Figure 3.** Abliteration on `gemma-3-1b` (fp32): 3 of 7 stock↔abliterated cosines (red) fall "
+     "below the within-model self-cosine band (grey) — confidence, frustration and surprise move; the "
+     "emotion↔refusal overlap (lower panel) is 0.08–0.27."),
     ("**Table 3.** Refusal ablation vs. a matched random-direction control",
      ART / "abliteration" / "gemma-3-4b_vs_gemma-3-4b-abl.png",
-     "**Figure 5.** Refusal abliteration on `gemma-3-4b` (bf16): the emotion directions re-orient "
+     "**Figure 5.** Refusal abliteration on `gemma-3-4b` (bf16): all seven emotion directions re-orient "
      "(red points fall well below the noise band) while separability is largely preserved — an "
      "effect the random-direction control (Table 3) shows is refusal-specific."),
 ]

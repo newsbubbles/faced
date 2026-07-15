@@ -86,6 +86,12 @@ def main():
     ap.add_argument("--dry", action="store_true")
     a = ap.parse_args()
 
+    # LDA layer-selection is O(d_model^3) — intractable at d=5376 (27b). Mean-only
+    # picks the layer by diff-of-means AUC instead (same AUC, ~100x faster) and keeps
+    # the whole ladder consistent. The abliteration cosines use diff-of-means anyway.
+    (REPO_ROOT / "config" / "MEAN_ONLY").touch()
+    log("mean-only fits enabled (config/MEAN_ONLY)")
+
     # register stock models in the local registry (per-model arch / layer path)
     register({k: {"hf_id": LADDER[k]["hf"], "arch": LADDER[k]["arch"],
                   "layer_path": LADDER[k]["layer_path"], "dtype": a.dtype,
@@ -120,9 +126,10 @@ def main():
         if hf:
             _upload(hf, a.results_repo)
 
-    # final aggregate cleanliness matrix across all models
+    # final aggregate matrices across all models: cleanliness + behavioural confirmation
     if not a.dry:
         run(["scripts/cleanliness_matrix.py"] + a.models, a.results_repo, hf)
+        run(["scripts/behavioral_matrix.py"] + a.models, a.results_repo, hf)
     (REPO_ROOT / "artifacts" / "DONE.marker").write_text(json.dumps(status), encoding="utf-8")
     if hf:
         _upload(hf, a.results_repo)

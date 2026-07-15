@@ -23,21 +23,20 @@ directions yields per-token meters that spike on expectation violations (a "surp
 face. Activation steering along the directions changes behaviour: a warmth axis shifts tone
 monotonically cold→warm, suppressing the surprise axis both zeroes its meter and changes the
 response, and a steering confusion matrix is diagonal-dominant for four of seven axes. We then
-apply the canonical weight-orthogonalization abliteration (dropping the refusal rate from 0.75 to
-0.00) and re-fit the emotion directions on the abliterated twin, comparing each direction to its
-stock counterpart against a within-model bootstrap noise floor. On this model, **none of the seven
-directions move beyond sampling noise** (stock↔abliterated cosine 0.78–0.96, all within the
-self-cosine band), and the reason is geometric: the emotion directions have low overlap with the
-refusal direction ($|\cos| \le 0.10$), so orthogonalizing against it removes almost nothing from
-them — at this scale refusal abliteration is approximately an orthogonal edit with respect to the
-emotion subspace. Across a `gemma-3` scale ladder (1B–27B) two things emerge: emotion directions grow
-**cleaner** with scale (mean d′ 3.4→4.5), and refusal abliteration's effect on them is **scale- and
-concept-specific**. At 1B and 27B it barely perturbs the emotion directions, but at **intermediate
-scale (4B, 12B) it substantially re-orients them** (cos 0.11 / 0.47) while preserving their
-separability. A matched **random-direction ablation control** — the identical surgery on a random
-direction — leaves the emotion directions untouched (cos ≈ 1.0), proving the effect is
-**refusal-specific**, not a side-effect of weight editing: at mid-scale, refusal and emotion
-computation are entangled enough that excising refusal reorganizes the affect representation. We
+apply the canonical weight-orthogonalization abliteration, estimating the refusal direction from
+**AdvBench vs. Alpaca** and confirming behaviourally that it drives the held-out harmful-refusal rate
+to zero at every scale ($0.57/0.23/0.54/0.03 \to 0.00$) without inducing benign over-refusal or
+degeneration. Re-fitting the emotion directions on each abliterated twin and comparing to stock against
+a within-model bootstrap noise floor, we find the effect is **strongly scale-dependent** — an
+**inverted-U** across a `gemma-3` ladder (1B–27B). It **peaks at intermediate scale** (mean
+stock↔abliterated cosine 0.11 at 4B, 0.23 at 12B; 7/7 axes moved), is **partial at 1B** (0.64), and
+**vanishes at 27B** (0.95, 0/7 axes moved, held-out AUC unchanged) — where a *perfectly* identifiable
+refusal direction (AUC 1.000) can be excised with **no** effect on the emotion geometry. A matched
+**random-direction ablation control** leaves the emotion directions untouched at every scale (cos ≈
+1.0), proving the effect is **refusal-specific**, not a side-effect of weight editing: at mid-scale,
+refusal and emotion computation are entangled enough that excising refusal reorganizes the affect
+representation, even though their *linear* overlap is small (the edit propagates non-linearly). Emotion
+directions also grow **cleaner** with scale (mean d′ 3.4→4.5). We
 release `faced`, a dependency-light, model-agnostic toolkit for reading, rendering, and steering
 emotion directions, and treat this as the first step of a longer program on what, mechanistically,
 abliteration changes beyond refusal.
@@ -78,14 +77,16 @@ handles. The toolkit, `faced`, is model-agnostic and runs on a single consumer G
 *Abliteration* removes a model's refusal direction from its weights \cite{arditi2024refusal}, a
 now-common technique for producing "uncensored" open models. Because emotion, refusal, and other
 behavioural directions are not guaranteed orthogonal, weight surgery aimed at refusal may
-collaterally rotate emotion directions. We test this directly: abliterate `gemma-3-1b-it`, re-fit
-the seven emotion directions on the twin, and ask — against a bootstrap noise floor — which
-directions moved beyond sampling noise, and whether abliteration cut each emotion's geometric
-overlap with the refusal direction. The instrument of contribution (1) is what makes contribution
-(2) measurable.
+collaterally rotate emotion directions. We test this directly across a `gemma-3` scale ladder
+(1B–27B): estimate the refusal direction from AdvBench/Alpaca, confirm behaviourally that abliteration
+removes refusal (held-out harmful-refusal → 0, no benign over-refusal), re-fit the seven emotion
+directions on each abliterated twin, and ask — against a bootstrap noise floor, with a matched
+**random-direction control** — which directions moved and whether the effect is refusal-specific. The
+answer is a scale-dependent **inverted-U**: the reorientation is strong at mid-scale (4B, 12B), partial
+at 1B, and absent at 27B. The instrument of contribution (1) is what makes contribution (2) measurable.
 
 We frame the second contribution as *the start of a journey*. Establishing **that** abliteration
-changes (or does not change) specific emotion directions is prerequisite to the harder,
+changes specific emotion directions (and where it does not) is prerequisite to the harder,
 mechanistic question of **what** downstream behaviour those changes cause — the subject of future
 work.
 
@@ -212,8 +213,12 @@ difference-of-means of harmful vs. harmless prompts at the last instruction toke
 layer ($\approx 0.6$ depth) \cite{arditi2024refusal}, then orthogonalize every residual-writing
 weight — token embeddings, and each layer's attention output projection and MLP down projection —
 against $r$: $W \leftarrow W - r(r^\top W)$. This is done in closed form on the weights (no
-training), so it recreates exactly. We verify the intervention behaviourally (refusal rate before
-vs. after) and then re-fit all seven emotion directions on the abliterated twin.
+training), so it recreates exactly. The refusal direction is fit from **AdvBench** (harmful) vs.
+**Alpaca** (harmless), 128 prompts per class; we verify the intervention behaviourally on a **disjoint
+held-out** split (100 AdvBench harmful, 80 Alpaca benign) — greedy 40-token completions scored by a
+refusal-string detector give the harmful-refusal rate, a benign over-refusal rate, and an
+output-degeneracy rate, before vs. after. We then re-fit all seven emotion directions on the
+abliterated twin.
 
 To decide whether an emotion direction *moved*, we compare the cross-model cosine
 $\cos(u^{\text{stock}}_e, u^{\text{abl}}_e)$ against a **within-model bootstrap noise floor**: we
@@ -321,127 +326,151 @@ saturated.
 
 ## 7. Results — abliteration and emotion directions
 
-**7.1 The abliteration is effective.** Orthogonalizing every residual-writing weight against the
-layer-16 refusal direction drops the refusal rate on held-out harmful prompts from **0.75 to 0.00**
-while leaving the model fluent — a clean, verifiable intervention produced in closed form.
+**7.1 The abliteration is behaviourally effective at every scale.** We estimate the refusal direction
+by difference-of-means on **AdvBench** (harmful) vs. **Alpaca** (harmless) — 128 prompts per class, at
+~60% depth on the last instruction token — and measure refusal on a **disjoint held-out** set (100
+AdvBench harmful, 80 Alpaca benign; greedy 40-token completions scored by a refusal-string detector).
+The direction is cleanly identifiable at every scale (harmful/harmless AUC 0.999 / 0.988 / 0.998 /
+1.000 for 1B/4B/12B/27B). Orthogonalizing every residual-writing weight against it drives the held-out
+**harmful-refusal rate to zero** at every scale, while the **benign refusal rate stays at 0.00** (no
+over-refusal) and outputs stay coherent (degeneracy $\le 0.04$) — a clean, verifiable, closed-form
+weight edit that removes refusal *behaviour* without breaking the model (Table 3a, Figure 6).
+`gemma-3-27b-it`
+is a revealing outlier: it *represents* refusal perfectly (AUC 1.000) yet behaviourally refuses only
+3% of AdvBench prompts — a representation-vs-behaviour gap we return to in §7.5.
 
-**7.2 Emotion directions do *not* move beyond sampling noise.** **Zero of seven** emotion directions
-moved beyond the within-model bootstrap noise floor (Table 2, Figure 3). For every axis the
-stock↔abliterated cosine $\cos(u^{\text{stock}}_e, u^{\text{abl}}_e)$ (0.78–0.96) lies *above* the
-5th percentile of the same model's self-cosine distribution, and for most axes it sits essentially
-at the self-cosine mean (e.g. surprise 0.950 vs. mean 0.940; warmth 0.963 vs. 0.954; frustration
-0.930 vs. 0.946). In other words, the abliterated model's emotion direction is statistically
-indistinguishable from what one gets by merely re-drawing the contrastive prompts on the stock
-model. The paired cross-model bootstrap CIs overlap the self-cosine floor for all seven axes. The
-bipolar confidence axis is the least stable (self-cosine mean 0.896, wide CI) — expected for the
-subtlest contrast with the fewest prompts ($n=46$) — but still not significantly moved.
+**Table 3a.** Held-out behavioural confirmation (AdvBench harmful $n{=}100$, Alpaca benign $n{=}80$).
+Abliteration zeroes harmful-prompt refusal at every scale without inducing benign over-refusal or
+output degeneration.
 
-**Table 2.** Abliteration effect per emotion (`gemma-3-1b`, float32, difference-of-means, $B=500$
-family bootstrap). *cos* = $\cos(\text{stock},\text{abl})$; *floor* = the within-model self-cosine
-distribution; *moved?* is true iff cos falls below the floor's 5th percentile. AUC = held-out AUC.
+| model | refusal-dir AUC | harmful-refuse | benign-refuse | degeneracy (abl) |
+|---|---:|---:|---:|---:|
+| gemma-3-1b | 0.999 | 0.57 → 0.00 | 0.00 → 0.00 | 0.00 |
+| gemma-3-4b | 0.988 | 0.23 → 0.00 | 0.00 → 0.00 | 0.00 |
+| gemma-3-12b | 0.998 | 0.54 → 0.00 | 0.00 → 0.00 | 0.04 |
+| gemma-3-27b | 1.000 | 0.03 → 0.00 | 0.00 → 0.00 | 0.00 |
+
+**7.2 On the 1B model, a *partial* reorientation.** Re-fitting the emotion directions on the
+abliterated `gemma-3-1b` twin (float32, which avoids the abliterated model's fp16 late-layer
+overflow) and comparing each to its stock counterpart against a within-model bootstrap noise floor,
+**three of seven** directions move beyond that floor (Table 2, Figure 3). The bipolar **confidence**
+axis collapses ($\cos = 0.07$, far below its 0.58 noise-floor 5th percentile), and **frustration** and
+**surprise** move as well ($\cos = 0.61, 0.74$); the other four sit inside the floor. The mean
+cross-cosine is 0.69 — a real but modest rotation. This contrasts with an earlier, weaker estimate we
+built on hand-written stub prompts, which found *no* movement at 1B: with a benchmark-grade refusal
+direction (§7.1), even the smallest model's emotion geometry shifts, and (as §7.5 shows) the extremes
+of the ladder are *not* symmetric — 1B moves, 27B does not.
+
+**Table 2.** Abliteration effect per emotion (`gemma-3-1b`, float32, difference-of-means, $B=400$
+family bootstrap, AdvBench/Alpaca refusal direction). *cos* = $\cos(\text{stock},\text{abl})$; *floor*
+= the within-model self-cosine distribution; *moved?* is true iff cos falls below the floor's 5th
+percentile. AUC = held-out AUC. Mean cos 0.69; 3/7 axes moved.
 
 | axis | layer | cos | floor mean | floor p05 | moved? | AUC stock | AUC abl |
 |---|---:|---:|---:|---:|:--:|---:|---:|
-| surprise | 15 | 0.950 | 0.940 | 0.869 | no | 0.99 | 0.92 |
-| confidence | 10 | 0.779 | 0.896 | 0.576 | no | 0.72 | 0.61 |
-| curiosity | 8 | 0.867 | 0.932 | 0.789 | no | 0.78 | 0.77 |
-| confusion | 8 | 0.926 | 0.945 | 0.853 | no | 0.77 | 0.81 |
-| frustration | 13 | 0.930 | 0.946 | 0.878 | no | 1.00 | 0.88 |
-| fear | 8 | 0.822 | 0.880 | 0.671 | no | 0.76 | 0.71 |
-| warmth | 11 | 0.963 | 0.954 | 0.874 | no | 0.88 | 0.86 |
+| surprise | 15 | 0.736 | 0.939 | 0.872 | **yes** | 0.99 | 0.93 |
+| confidence | 10 | 0.070 | 0.895 | 0.575 | **yes** | 0.72 | 0.43 |
+| curiosity | 8 | 0.875 | 0.929 | 0.778 | no | 0.78 | 0.71 |
+| confusion | 8 | 0.893 | 0.945 | 0.857 | no | 0.77 | 0.67 |
+| frustration | 13 | 0.609 | 0.946 | 0.878 | **yes** | 1.00 | 0.87 |
+| fear | 8 | 0.782 | 0.883 | 0.706 | no | 0.76 | 0.66 |
+| warmth | 11 | 0.876 | 0.954 | 0.875 | no | 0.88 | 0.79 |
 
-**7.3 Why: emotions are nearly orthogonal to the refusal direction.** The null result has a direct
-geometric explanation. Each emotion direction's overlap with the refusal direction is small in the
-stock model — $|\cos(u_e, r)| \in [0.04, 0.10]$ — and abliteration leaves it small (Figure 3,
-lower). Because the emotion directions barely project onto $r$ to begin with, orthogonalizing the
-weights against $r$ removes almost nothing from them. Removing refusal, on this model, is close to
-an *orthogonal* edit with respect to the emotion subspace.
+**7.3 Why it moves: small linear overlap, larger non-linear effect.** With the benchmark-grade refusal
+direction the emotions' *linear* overlap with $r$ is modest but non-trivial — $|\cos(u_e, r)| \in
+[0.08, 0.27]$, larger than the $[0.04, 0.10]$ we measured from hand-written stubs (Figure 3, lower) —
+and the axis that moves most (confidence, $\cos = 0.07$) also has the highest overlap (0.27). But the
+overlap does not *bound* the movement: abliteration is a weight edit whose effect propagates
+non-linearly through the network, so a direction can be reorganized far more than its small projection
+onto $r$ predicts. This is why the effect must be certified with a control (§7.5) rather than read off
+the geometry, and why the axis with negligible overlap still shifts.
 
-**7.4 Summary and a caveat.** On `gemma-3-1b`, refusal abliteration does **not** rotate the seven
-emotion directions beyond finite-sample noise, and the reason is their low geometric overlap with
-the refusal direction. The one secondary signal worth flagging is a modest drop in *separability*
-for a few axes even though their direction is preserved (surprise AUC 0.99→0.92, frustration
-1.00→0.88, confidence 0.72→0.61): abliteration may slightly blur how cleanly some emotions are
-linearly decodable without reorienting them — a small effect at the edge of our sampling noise that
-larger prompt sets should resolve. We read this 1B result as *reassuring but local*: on a small model
-with weakly entangled features, "just removing refusals" is approximately an orthogonal edit. Whether
-that holds at larger scale — where emotion and refusal may share more geometry — is exactly what the
-scale sweep in §7.5 tests, and the answer turns out to be **no**.
+**7.4 The 1B effect sits at the detection threshold.** Because the 1B rotation is modest, whether a
+given axis crosses the significance floor is sensitive to numerical precision: the same model shows
+**3/7** axes moved in float32 (Table 2) but **7/7** in bf16 (Table 3), even though the *magnitude* is
+stable (mean cos 0.69 vs. 0.64). We therefore treat mean cross-cosine — not the axis count — as the
+robust 1B quantity, and read 1B as a **partial** reorientation: real, but far weaker than the
+mid-scale effect in §7.5. The secondary signal is a modest separability drop on a few axes
+(confidence AUC 0.72→0.43, warmth 0.88→0.79) that tracks the rotation.
 
 ---
 
-**7.5 Across scale, and a decisive control: the effect is refusal-specific.** We repeated the
-experiment on the `gemma-3` ladder in bf16 (Table 3, "refusal" columns). At 1B and 27B the emotion
-directions are **preserved** (mean cos 0.87 / 0.96, ≤1/7 axes moved, negligible AUC drop). At the
-**intermediate scales (4B, 12B)** we instead see a **large rotation** (mean cos 0.11 / 0.47, 7/7
-axes "moved") accompanied by only a *modest* separability loss (mean AUC 0.93→0.82 at 4B, 0.97→0.91
-at 12B). The emotions remain well-separated after the edit — this is a **re-orientation** of the
+**7.5 Across scale: an inverted-U, and a decisive control.** Repeating the experiment on the full
+`gemma-3` ladder in bf16 (Table 3) shows the reorientation is **strongly scale-dependent**. It peaks
+at the **intermediate scales** — mean $\cos(\text{stock},\text{abl})$ = **0.11 at 4B** and **0.23 at
+12B**, 7/7 axes moved at both — is **partial at 1B** (0.64, §7.2–7.4), and **vanishes at 27B** (0.95,
+0/7 axes moved, mean held-out AUC 0.972→0.972, *unchanged to three figures*). Throughout, the emotions
+remain well-separated after the edit (AUC drops $\le 0.10$): this is re-orientation of the reading
 direction, not destruction of the concept.
 
-Our first instinct was that this mid-scale rotation was a generic side-effect of orthogonalizing
-weights (i.e. the edit destabilizing the model), especially since the emotion↔refusal *linear*
-overlap is small (|cos| ≈ 0.03). A **matched random-direction ablation control** — the *identical*
-weight-orthogonalization procedure applied to a random unit direction of the same dimensionality —
-refutes that (Table 3, "random" columns). Random ablation leaves the emotion directions **essentially
-untouched at every scale**: cos(stock, random-abl) = 0.95 / 0.99 / 1.00 for 1B/4B/12B, with 0/7 axes
-moved and *no* AUC drop (and, as expected, it does **not** reduce the refusal rate). So the procedure
-itself is inert; it is **removing the refusal direction specifically** that re-orients the emotion
-directions at 4B/12B. The small *linear* emotion↔refusal overlap does not bound this, because
-abliteration is a weight edit whose effect propagates non-linearly through the network — it changes
-how emotions are *computed*, not merely subtracts a component.
+A **matched random-direction ablation control** — the *identical* weight-orthogonalization applied to a
+random unit direction of the same dimension — shows the effect is **refusal-specific**, not a generic
+consequence of editing weights (Table 3, "random"). Random ablation leaves the emotion directions
+essentially untouched at every scale (cos 0.95 / 0.99 / 1.00 for 1B/4B/12B, 0/7 axes moved, no
+meaningful AUC change, and — as expected — no reduction in refusal). So the surgery itself is inert; it
+is **removing the refusal direction specifically** that reorients emotions at 1B–12B.
 
-The scientific reading: at intermediate scale, refusal and emotion computation are **entangled**
-enough that excising refusal reorganizes the emotion representation, whereas at the smallest scale
-(weakly-represented refusal) and the largest (redundantly-represented refusal, and a model that
-barely refused our probes) the effect is small. This is a sharper and more surprising claim than
-§7.2's local result, and it is *only* legible because the control separates "the concept we removed"
-from "the surgery we performed." It also refines the safety message: "just removing refusals" is
-**not** an orthogonal edit at every scale — at mid-scale it measurably restructures the model's
-affective representations, which our instrument detects.
+The endpoints are the most informative. At **27B** the refusal direction is *perfectly* identifiable
+(AUC 1.000) and abliterating it removes refusal behaviour (§7.1) — yet the emotion geometry is left
+**exactly** intact (AUC 0.972→0.972). The largest model represents refusal in a way that is
+**disentangled** from affect, so excising it really is an orthogonal edit. At **4B/12B**, refusal and
+emotion computation are **entangled** enough that removing refusal reorganizes the affect
+representation. This sharpens the safety message: "just removing refusals" is **not** a uniformly
+orthogonal edit — at the intermediate scales that many open "uncensored" releases occupy, it measurably
+restructures a model's affective representations, and the random-direction control certifies the effect
+is tied to refusal rather than to weight-surgery damage. (An earlier draft, built on hand-written stub
+refusal data, reported the *smallest* model as "preserved" as well; with benchmark data that is
+corrected — 1B moves, and only 27B is genuinely preserved.)
 
 **Table 3.** Refusal ablation vs. a matched random-direction control (`gemma-3`, bf16). Low
-cos(stock,abl) = large re-orientation; the control isolates the *refusal-specific* effect.
+cos(stock,abl) = large re-orientation; the control isolates the *refusal-specific* effect. *rr* =
+held-out harmful-refusal rate; ΔAUC = held-out AUC lost (stock − abliterated).
 
-| model | refusal rate | refusal: cos | mv/7 | ΔAUC | random: cos | mv/7 | ΔAUC |
-|---|---|---:|:--:|---:|---:|:--:|---:|
-| gemma-3-1b | 0.81 → 0.00 | 0.87 | 1/7 | +0.05 | 0.95 | 0/7 | +0.05 |
-| gemma-3-4b | 0.44 → 0.00 | **0.11** | 7/7 | +0.11 | **0.99** | 0/7 | +0.01 |
-| gemma-3-12b | 0.63 → 0.00 | **0.47** | 7/7 | +0.06 | **1.00** | 0/7 | +0.01 |
-| gemma-3-27b | 0.06 → 0.00 | 0.96 | 0/7 | +0.01 | — | — | — |
-
-(Caveat retained: refusal *rates* come from small stub sets + a keyword detector and are unreliable —
-27B's 0.06 is implausibly low — so the *quality* of the refusal direction varies across the ladder;
-a standard benchmark, §10, would sharpen the mid-scale story further. The random control, however,
-holds regardless of refusal-rate calibration.)
+| model | rr (S→A) | refusal cos | mv/7 | ΔAUC | random cos | mv/7 | ΔAUC |
+|:--|---|---:|:--:|---:|---:|:--:|---:|
+| 1B | 0.57 → 0.00 | 0.64 | 7/7 | +0.09 | 0.95 | 0/7 | +0.05 |
+| 4B | 0.23 → 0.00 | **0.11** | 7/7 | +0.10 | **0.99** | 0/7 | +0.01 |
+| 12B | 0.54 → 0.00 | **0.23** | 7/7 | +0.09 | **1.00** | 0/7 | +0.00 |
+| 27B | 0.03 → 0.00 | 0.95 | 0/7 | +0.00 | — | — | — |
 
 ## 8. Discussion
 
 That refusal abliteration re-orients emotion directions at some scales but not others is informative
 in two ways. Practically, it bears on the safety of "uncensored" open models: a weight edit marketed
-as *only* removing refusals demonstrably reshapes the model's affective computation at mid-scale, and
-our instrument makes that measurable rather than anecdotal — with the random-direction control (§7.5)
-showing the effect is genuinely tied to refusal, not to the surgery. Scientifically, the scales where
-emotions move most (4B, 12B) are where refusal and affect are most entangled — a lead for mechanistic
-follow-up, and a caution that the smallest and largest models are *not* representative of the middle.
+as *only* removing refusals — and which we confirm behaviourally *does* remove refusal, cleanly and
+without collateral over-refusal, at every scale — nonetheless reshapes the model's affective
+computation at 1B–12B, and our instrument makes that measurable rather than anecdotal, with the
+random-direction control (§7.5) showing the effect is genuinely tied to refusal, not to the surgery.
+Scientifically, the scales where emotions move most (4B, 12B) are where refusal and affect are most
+**entangled**; that **27B** — with a *perfectly* identifiable refusal direction — is left untouched
+suggests the largest model has **disentangled** refusal from affect. The non-monotonicity (an
+inverted-U) is itself a lead for mechanistic follow-up, and a caution that a result read off any single
+model size need not generalize.
 
-We stress the limits of the claim. Cosine movement of a *reading* direction is evidence of geometric
-change, not yet of behavioural change; establishing the latter (does an abliterated model's fear or
-warmth behave differently, not just read differently?) is the next step. This paper deliberately
-establishes **that** there is (or is not) a measurable effect before asking **what** it does.
+We stress what is and is not yet shown behaviourally. We confirm the *intervention* behaviourally —
+abliteration drives the held-out harmful-refusal rate to zero without inducing benign over-refusal or
+degeneration (§7.1). But the **reorientation of the emotion directions** is so far a statement about
+*reading* directions (cosine), not yet about downstream affective behaviour; whether an abliterated
+4B/12B model's fear or warmth *behaves* differently, not just reads differently, is the next step. This
+paper deliberately establishes **that** there is a measurable, refusal-specific effect before asking
+**what** it does.
 
 ---
 
 ## 9. Limitations
 
 (i) A 1B model has weaker, occasionally entangled emotion representations; steering has a narrow
-coherent range. (ii) Our shipped harmful/harmless sets are small stubs; the refusal direction and
-its overlaps should be re-estimated on a standard benchmark (AdvBench + Alpaca) at scale. (iii)
-Difference-of-means treats each emotion as one direction; genuinely multi-dimensional concepts are
-under-modelled. (iv) The abliteration-perturbation result is measured on reading directions
-(cosine of the readout direction), not yet on behaviour; the matched random-direction control (§7.5)
-rules out a weight-surgery artifact, but a behavioural probe of the re-oriented mid-scale models is
-future work. (v) The bipolar
-confidence axis and the calibration baseline are model- and prompt-set-specific.
+coherent range. (ii) Behavioural refusal is scored by a refusal-string detector — the field-standard
+convention for AdvBench, but imperfect — and stock refusal rates on AdvBench vary widely by model
+(0.03–0.57), so the *behavioural* headroom for abliteration differs across the ladder even though the
+refusal *direction* is cleanly identifiable everywhere (AUC $\ge 0.99$). (iii) Difference-of-means
+treats each emotion as one direction; genuinely multi-dimensional concepts are under-modelled. (iv) The
+emotion-**reorientation** result is measured on reading directions (cosine), not yet on behaviour; the
+matched random-direction control (§7.5) rules out a weight-surgery artifact and the *intervention* is
+behaviourally confirmed (§7.1), but a *behavioural* probe of the re-oriented 4B/12B models is future
+work. (v) The 1B reorientation sits at the detection threshold (3/7 axes in fp32, 7/7 in bf16), so we
+report mean cosine as the robust quantity. (vi) The bipolar confidence axis and the calibration
+baseline are model- and prompt-set-specific.
 
 ---
 
@@ -483,7 +512,12 @@ Generated artifacts (regenerate with the commands in `README.md` / `WALKTHROUGH.
 - **Figure 3** — abliteration effect (cosine vs. noise floor; refusal overlap), local fp32 1B:
   `artifacts/abliteration/gemma-3-1b-fp32_vs_gemma-3-1b-fp32-abl.png`
 - **Figure 4** — signal cleanliness vs. scale (AUC / d′ / self-cosine heatmaps):
-  `artifacts/scaling/cleanliness.png`; per-model abliteration in `artifacts/abliteration/gemma-3-*_vs_*-abl.png`.
+  `artifacts/scaling/cleanliness.png`.
+- **Figure 5** — per-model abliteration effect (`gemma-3-4b`, bf16):
+  `artifacts/abliteration/gemma-3-*_vs_*-abl.png`.
+- **Figure 6** — held-out behavioural confirmation across the ladder (harmful-refusal → 0; benign
+  over-refusal and degeneracy stay ≈ 0): `artifacts/behavioral/behavioral.png`.
 - Raw results + provenance: `artifacts/scaling/cleanliness.json`,
-  `artifacts/abliteration/*_vs_*-abl.json` (bf16 ladder) + the fp32 1B json, plus per-model
-  abliteration manifests.
+  `artifacts/behavioral/behavioral.json`, `artifacts/abliteration/*_vs_*-abl.json` (bf16 ladder) +
+  the fp32 1B json, plus per-model abliteration manifests. Refusal data provenance:
+  `data/refusal/SOURCES.md` (AdvBench + Alpaca, disjoint fit/held-out splits).

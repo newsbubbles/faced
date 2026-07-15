@@ -22,7 +22,7 @@ import torch
 from safetensors.torch import save_file
 
 from faced.backends import load, REPO_ROOT
-from faced.abliterate import compute_refusal_direction, abliterate, refusal_rate
+from faced.abliterate import compute_refusal_direction, abliterate, behavioral_eval
 
 
 def main():
@@ -55,17 +55,23 @@ def main():
         r, layer, auc = compute_refusal_direction(b, layer=a.layer)
         print(f"  refusal direction @ layer {layer}  (harmful/harmless AUC={auc:.3f})")
 
-    print("  measuring refusal rate (stock) ...")
-    rr_before = refusal_rate(b)
-    print(f"    stock refusal rate = {rr_before:.2f}")
+    print("  behavioral eval (stock, held-out AdvBench + Alpaca) ...")
+    behav_before = behavioral_eval(b)
+    rr_before = behav_before["harmful_refusal_rate"]
+    print(f"    stock: harmful-refusal={rr_before:.2f} "
+          f"benign-refusal={behav_before['benign_refusal_rate']:.2f} "
+          f"(n={behav_before['n_harmful']}/{behav_before['n_benign']})")
 
     print("  abliterating (orthogonalizing residual-writing weights) ...")
     touched = abliterate(b, r)
     print(f"    touched: embed={touched['embed']} o_proj={touched['o_proj']} down_proj={touched['down_proj']}")
 
-    print("  measuring refusal rate (abliterated) ...")
-    rr_after = refusal_rate(b)
-    print(f"    abliterated refusal rate = {rr_after:.2f}")
+    print("  behavioral eval (abliterated, held-out) ...")
+    behav_after = behavioral_eval(b)
+    rr_after = behav_after["harmful_refusal_rate"]
+    print(f"    abliterated: harmful-refusal={rr_after:.2f} "
+          f"benign-refusal={behav_after['benign_refusal_rate']:.2f} "
+          f"degenerate={behav_after['harmful_degenerate_rate']:.2f}")
 
     print(f"  saving -> {out_dir}")
     b.model.save_pretrained(str(out_dir))
@@ -81,6 +87,8 @@ def main():
         "kind": "random" if a.random else "refusal", "seed": a.seed if a.random else None,
         "refusal_layer": int(layer), "refusal_auc": float(auc),
         "refusal_rate_stock": float(rr_before), "refusal_rate_abliterated": float(rr_after),
+        "behavioral_heldout": True,
+        "behavioral_stock": behav_before, "behavioral_abl": behav_after,
         "touched": touched, "d_model": b.d_model, "n_layers": b.n_layers,
     }
     with open(out_dir / "abliteration_manifest.json", "w", encoding="utf-8") as f:

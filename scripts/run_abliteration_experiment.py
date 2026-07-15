@@ -116,9 +116,14 @@ def main():
     # console table
     print(f"\n  ABLITERATION EXPERIMENT  {a.stock}  vs  {a.abl}")
     if abl_manifest:
-        print(f"  refusal rate {abl_manifest.get('refusal_rate_stock')}"
-              f" -> {abl_manifest.get('refusal_rate_abliterated')}"
-              f"  (refusal dir @ layer {abl_manifest.get('refusal_layer')})")
+        bs = abl_manifest.get("behavioral_stock", {})
+        ba = abl_manifest.get("behavioral_abl", {})
+        print(f"  refusal dir @ layer {abl_manifest.get('refusal_layer')} "
+              f"(harmful/harmless AUC {abl_manifest.get('refusal_auc', float('nan')):.3f})")
+        print(f"  BEHAVIOUR (held-out): harmful-refusal "
+              f"{abl_manifest.get('refusal_rate_stock')} -> {abl_manifest.get('refusal_rate_abliterated')}"
+              f"   benign-refusal {bs.get('benign_refusal_rate')} -> {ba.get('benign_refusal_rate')}"
+              f"   abl-degenerate {ba.get('harmful_degenerate_rate')}")
     print(f"\n  {'axis':12s} {'L':>2s} {'cos(stock,abl)':>14s} {'noise floor p05':>15s} "
           f"{'moved?':>7s} {'aucS':>5s} {'aucA':>5s} {'refS':>5s} {'refA':>5s}")
     for e, r in results.items():
