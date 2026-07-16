@@ -1,37 +1,43 @@
-"""Assemble an arXiv-ready LaTeX bundle from the generated paper.tex.
+"""Assemble a SELF-CONTAINED, arXiv-ready LaTeX bundle from paper.md.
 
-arXiv compiles your source on its own servers (default engine: pdfLaTeX), so the
-pandoc-generated `paper.tex` needs three fixes it can't ship with:
-  * \includegraphics absolute Windows paths  -> bare filenames (one flat dir)
-  * \bibliography absolute path              -> references
-  * body Unicode (→ ↔ ′ ≈ ≥ − Δ α · §)       -> \DeclareUnicodeCharacter so it
-                                                compiles under pdfLaTeX, not only
-                                                Xe/LuaLaTeX
-It also turns the two-entry \author (which `article` renders as two co-authors)
-into a single author with the affiliation on a second line.
+arXiv compiles your source itself (default engine pdfLaTeX) and **does not run
+BibTeX** — so a bundle that ships only `.bib` gets an empty bibliography. Rather
+than depend on a hand-generated `.bbl`, we regenerate the LaTeX with the
+bibliography **inlined** via pandoc `--citeproc`. The result needs no `.bib`, no
+`.bbl`, no BibTeX pass.
 
-    python paper/build.py        # (re)generate paper.tex first
-    python paper/build_arxiv.py  # then bundle -> paper/arxiv/
+We then apply the fixes the arXiv guides call for:
+  * `\\pdfoutput=1` as the first line  -> forces pdfLaTeX (our \\DeclareUnicode…
+    and .png figures require it, not dvi-latex)
+  * \\includegraphics paths            -> bare, underscore-free filenames, flat dir
+  * two-entry \\author                 -> one author, affiliation on line 2
+  * \\DeclareUnicodeCharacter for the 10 non-ASCII glyphs (pdfLaTeX-safe)
+  * a 4-passes \\typeout after \\end{document} so refs resolve
 
-Upload the whole paper/arxiv/ folder to arXiv (or to Overleaf to compile-check
-first; set the compiler to pdfLaTeX to mirror arXiv).
+    python paper/build_arxiv.py        # (regenerates its own _pandoc.md)
+
+Bundle -> paper/arxiv/ : paper.tex + the 5 figures. Upload that folder to arXiv
+(compile-check on Overleaf first, Compiler = pdfLaTeX).
 """
 import re
 import shutil
 from pathlib import Path
 
+import pypandoc
+
+import build  # sibling module: reuse its preprocess() (embeds figures, \cite -> [@..])
+
 PAPER = Path(__file__).resolve().parent
 ART = PAPER.parent / "artifacts"
 OUT = PAPER / "arxiv"
 
-# pdfLaTeX-safe replacements for every non-ASCII glyph in the source.
 UNICODE = {
     0x2192: r"\ensuremath{\rightarrow}",       # →
     0x2194: r"\ensuremath{\leftrightarrow}",   # ↔
-    0x2032: r"\ensuremath{{}^\prime}",         # ′  (as in d′)
+    0x2032: r"\ensuremath{{}^\prime}",         # ′
     0x2248: r"\ensuremath{\approx}",           # ≈
     0x2265: r"\ensuremath{\geq}",              # ≥
-    0x2212: r"\ensuremath{-}",                 # − (minus)
+    0x2212: r"\ensuremath{-}",                 # −
     0x0394: r"\ensuremath{\Delta}",            # Δ
     0x03B1: r"\ensuremath{\alpha}",            # α
     0x00B7: r"\textperiodcentered{}",          # ·
@@ -40,44 +46,57 @@ UNICODE = {
 
 
 def main():
+    shutil.rmtree(OUT, ignore_errors=True)       # start clean (no stale files ship)
     OUT.mkdir(parents=True, exist_ok=True)
-    tex = (PAPER / "paper.tex").read_text(encoding="utf-8")
+    src = build.preprocess()                     # writes/refreshes paper/_pandoc.md
+    bib = str(PAPER / "references.bib")
 
-    # 1) figure paths -> bare basenames; remember which files to copy
-    figs = []
+    # LaTeX with the bibliography INLINED (citeproc) -> no BibTeX needed on arXiv
+    tex = pypandoc.convert_file(
+        str(src), "latex",
+        extra_args=["--standalone", "--citeproc", f"--bibliography={bib}",
+                    "--metadata", "reference-section-title=References",
+                    "--resource-path", str(PAPER)])
+
+    # 1) figure paths -> bare, underscore-free basenames; remember what to copy
+    figs = {}  # sanitized_name -> path relative to artifacts/
 
     def repl(m):
         p = Path(m.group(1))
-        figs.append(p.as_posix())
-        return "{" + p.name + "}"
+        san = p.name.replace("_", "-")
+        figs[san] = p.as_posix().split("/artifacts/", 1)[1]
+        return "{" + san + "}"
 
     tex = re.sub(r"\{((?:[A-Za-z]:)?[^{}]*?/artifacts/[^{}]*?\.png)\}", repl, tex)
 
-    # 2) bibliography -> bare name (references.bib in the same dir)
-    tex = re.sub(r"\\bibliography\{[^}]*\}", r"\\bibliography{references}", tex)
-
-    # 3) single author with affiliation on its own line (not two co-authors)
+    # 2) single author with affiliation on its own line
     tex = tex.replace(r"Nathaniel Gibson \and Independent Researcher",
                       r"Nathaniel Gibson\\ Independent Researcher")
 
-    # 4) inject pdfLaTeX unicode declarations right before \begin{document}
+    # 3) force pdfLaTeX on arXiv (first line)
+    tex = "\\pdfoutput=1\n" + tex
+
+    # 4) pdfLaTeX unicode declarations before \begin{document}
     decl = ("\\ifPDFTeX\n"
             + "\n".join(f"\\DeclareUnicodeCharacter{{{cp:04X}}}{{{rep}}}"
                         for cp, rep in UNICODE.items())
             + "\n\\fi\n")
     tex = tex.replace("\\begin{document}", decl + "\\begin{document}", 1)
 
-    (OUT / "paper.tex").write_text(tex, encoding="utf-8")
+    # 5) make arXiv run enough passes for cross-references
+    tex = tex.replace(
+        "\\end{document}",
+        "\\end{document}\n\\typeout{get arXiv to do 4 passes: "
+        "Label(s) may have changed. Rerun}\n", 1)
 
-    # copy bib + the referenced figures (flattened to basenames)
-    shutil.copy(PAPER / "references.bib", OUT / "references.bib")
-    for posix in figs:
-        rel = posix.split("/artifacts/", 1)[1]
-        shutil.copy(ART / rel, OUT / Path(rel).name)
+    (OUT / "paper.tex").write_text(tex, encoding="utf-8")
+    for san, rel in figs.items():
+        shutil.copy(ART / rel, OUT / san)
 
     names = sorted(x.name for x in OUT.iterdir())
     print(f"arXiv bundle -> {OUT}")
-    print(f"  {len(figs)} figures + references.bib + paper.tex")
+    print(f"  self-contained (bibliography inlined; no .bib/.bbl needed)")
+    print(f"  {len(figs)} figures + paper.tex")
     print("  files:", names)
 
 
