@@ -32,6 +32,9 @@ paper/_prev_*.png
 paper/_style.html
 paper/paper.html
 
+# ── arXiv bundle (regenerate with paper/build_arxiv.py) ──
+paper/arxiv/
+
 # ── python ─────────────────────────────────────────────
 __pycache__/
 *.pyc
