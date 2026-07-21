@@ -39,3 +39,7 @@ paper/arxiv/
 __pycache__/
 *.pyc
 .venv/
+
+# read-vs-drive raw generations (bulky; summary _llm.json + figures kept)
+artifacts/read_vs_drive.*-*.json
+artifacts/read_vs_drive.gemma-*.json

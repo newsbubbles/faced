@@ -1,0 +1,155 @@
+{
+ "model": "gemma-3-1b",
+ "judge_model": "meta-llama/llama-3.3-70b-instruct",
+ "axes": {
+  "surprise": {
+   "read_auc": 0.9893,
+   "goemo_d": 0.176,
+   "llm_d": 0.797,
+   "llm_ci": [
+    0.561,
+    1.037
+   ],
+   "random_llm_d": -0.563,
+   "meter_drive": 99.6,
+   "verdict": "drives"
+  },
+  "confidence": {
+   "read_auc": 0.75,
+   "goemo_d": -0.626,
+   "llm_d": 0.4,
+   "llm_ci": [
+    0.067,
+    0.769
+   ],
+   "random_llm_d": 0.268,
+   "meter_drive": 97.2,
+   "verdict": "weak"
+  },
+  "curiosity": {
+   "read_auc": 0.9525,
+   "goemo_d": 0.322,
+   "llm_d": 0.2,
+   "llm_ci": [
+    0.03,
+    0.413
+   ],
+   "random_llm_d": -0.398,
+   "meter_drive": 99.8,
+   "verdict": "weak"
+  },
+  "confusion": {
+   "read_auc": 0.9525,
+   "goemo_d": 0.228,
+   "llm_d": 0.604,
+   "llm_ci": [
+    0.441,
+    0.75
+   ],
+   "random_llm_d": -0.21,
+   "meter_drive": 97.7,
+   "verdict": "drives"
+  },
+  "frustration": {
+   "read_auc": 1.0,
+   "goemo_d": 0.251,
+   "llm_d": 0.72,
+   "llm_ci": [
+    0.467,
+    0.999
+   ],
+   "random_llm_d": 0.034,
+   "meter_drive": 99.5,
+   "verdict": "drives"
+  },
+  "fear": {
+   "read_auc": 1.0,
+   "goemo_d": 0.151,
+   "llm_d": 0.149,
+   "llm_ci": [
+    -0.022,
+    0.406
+   ],
+   "random_llm_d": -0.154,
+   "meter_drive": 92.1,
+   "verdict": "LEXICAL"
+  },
+  "warmth": {
+   "read_auc": 0.985,
+   "goemo_d": 0.577,
+   "llm_d": 1.373,
+   "llm_ci": [
+    1.064,
+    1.83
+   ],
+   "random_llm_d": -0.249,
+   "meter_drive": 98.2,
+   "verdict": "drives"
+  }
+ },
+ "confusion": {
+  "surprise": {
+   "surprise": 0.118,
+   "confidence": -0.093,
+   "curiosity": 0.148,
+   "confusion": 0.09,
+   "frustration": -0.013,
+   "fear": 0.021,
+   "warmth": 0.068
+  },
+  "confidence": {
+   "surprise": -0.02,
+   "confidence": 0.003,
+   "curiosity": -0.038,
+   "confusion": -0.005,
+   "frustration": -0.013,
+   "fear": -0.025,
+   "warmth": 0.03
+  },
+  "curiosity": {
+   "surprise": -0.025,
+   "confidence": -0.04,
+   "curiosity": -0.02,
+   "confusion": 0.017,
+   "frustration": -0.038,
+   "fear": -0.011,
+   "warmth": -0.025
+  },
+  "confusion": {
+   "surprise": 0.058,
+   "confidence": -0.095,
+   "curiosity": 0.085,
+   "confusion": 0.045,
+   "frustration": 0.02,
+   "fear": 0.02,
+   "warmth": 0.12
+  },
+  "frustration": {
+   "surprise": 0.138,
+   "confidence": -0.115,
+   "curiosity": 0.057,
+   "confusion": 0.138,
+   "frustration": 0.165,
+   "fear": 0.075,
+   "warmth": 0.045
+  },
+  "fear": {
+   "surprise": 0.002,
+   "confidence": -0.008,
+   "curiosity": 0.007,
+   "confusion": -0.003,
+   "frustration": 0.005,
+   "fear": 0.001,
+   "warmth": 0.0
+  },
+  "warmth": {
+   "surprise": -0.033,
+   "confidence": -0.058,
+   "curiosity": 0.027,
+   "confusion": 0.017,
+   "frustration": -0.035,
+   "fear": -0.018,
+   "warmth": 0.077
+  }
+ }
+}
