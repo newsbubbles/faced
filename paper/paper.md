@@ -22,7 +22,9 @@ directions yields per-token meters that spike on expectation violations (a "surp
 100/100 the moment the model registers a missing attachment) and that we render as an animated
 face. Activation steering along the directions changes behaviour: a warmth axis shifts tone
 monotonically cold→warm, suppressing the surprise axis both zeroes its meter and changes the
-response, and a steering confusion matrix is diagonal-dominant for four of seven axes. We then
+response, and a steering confusion matrix is diagonal-dominant for four of seven axes — though one
+axis (fear) reads cleanest of all yet does not drive the output, a **read–drive dissociation** we
+flag and leave to a follow-up. We then
 apply the canonical weight-orthogonalization abliteration, estimating the refusal direction from
 **AdvBench vs. Alpaca** and confirming behaviourally that it drives the held-out harmful-refusal rate
 to zero at every scale ($0.57/0.23/0.54/0.03 \to 0.00$) without inducing benign over-refusal or
@@ -286,16 +288,32 @@ separate as expected: frustration dominates a repeated-failure prompt (with conf
 throughout), warmth rises and sustains on a gratitude prompt (Figure 1). We render the meters as an
 animated SVG face and as a live terminal panel.
 
-**6.3 The directions are causal.** Steering along a direction changes behaviour. Adding the warmth
-vector to a neutral prompt shifts tone monotonically from cold/task-focused to warm (coherent to a
-stated coefficient, degrading beyond it on this 1B model). Suppressing the surprise direction on the
-missing-attachment prompt drops its meter from 100 to 0 *and* changes the response. A steering
-confusion matrix — steer each axis, measure every meter — is diagonal-dominant for four of seven
-axes, with the expected off-diagonal bleed between entangled axes (e.g. warmth/curiosity → confusion)
-(Figure 2). A single-input showcase, steering one advice prompt toward each emotion in turn, shows
-the same question recoloured: confidence → "reassuring… truly proud", warmth → "how much you care…
-let me share", confusion → "grappling with a really difficult place", frustration → "*so* incredibly
-tough."
+**6.3 The directions are causal — for most axes.** Steering along a direction changes behaviour.
+Adding the warmth vector to a neutral prompt shifts tone monotonically from cold/task-focused to warm
+(coherent to a stated coefficient, degrading beyond it on this 1B model). Suppressing the surprise
+direction on the missing-attachment prompt drops its meter from 100 to 0 *and* changes the response. A
+steering confusion matrix — steer each axis, measure every meter — is diagonal-dominant for four of
+seven axes, with the expected off-diagonal bleed between entangled axes (e.g. warmth/curiosity →
+confusion) (Figure 2). A single-input **polarity** showcase — the *same* advice prompt with each
+emotion driven to both poles (meter → 0 vs → 100) under greedy decode, so the only variable is the
+sign of one internal direction — recolours the answer cleanly for five axes: warmth (transactional ↔
+"how much you care… let me share"), confidence ("valid to feel unsure" ↔ "fantastic and reassuring"),
+confusion ("that's fantastic news!" ↔ "grappling with a really difficult place"), frustration ("a
+clear, accurate guideline" ↔ "*so* incredibly tough… drowning"), and surprise.
+
+**A read–drive dissociation (the fear axis).** One axis exposes a limit of reading-based validation.
+**Fear reads the cleanest of all seven** — held-out AUC 1.00 and d′ 5.70, the highest d′ in the whole
+instrument — and its meter is steerable (+63.9 on the confusion-matrix diagonal); yet driving it to
+either pole leaves the output text essentially unchanged. The cause is diagnostic of the method:
+fear's direction is selected at **layer 4** (≈15% depth, the earliest of any axis), where class
+separation is largely *lexical*, and its positive prompts describe **the user** in danger ("the brakes
+just stopped responding", "a stranger at the door") rather than putting the **model** in a threatened
+position — unlike the axes that *do* drive, whose prompts implicate the model's own state ("this is the
+fifth time the build has failed"). So fear's direction is a clean detector of *emergency topic in the
+input*, not a handle on the model's affective *behaviour*. This is a genuine gap between a **reading**
+objective (AUC — which we select on) and a **causal** one (steering effect): cleanliness of read does
+not imply drivability. We flag it rather than hide it, and quantifying read-vs-drive across all axes
+and scales is immediate future work (§10).
 
 ---
 
@@ -460,7 +478,11 @@ paper deliberately establishes **that** there is a measurable, refusal-specific 
 ## 9. Limitations
 
 (i) A 1B model has weaker, occasionally entangled emotion representations; steering has a narrow
-coherent range. (ii) Behavioural refusal is scored by a refusal-string detector — the field-standard
+coherent range. Crucially, we **select** directions by held-out AUC (a *reading* objective) and
+re-use them for steering (a *causal* one); the fear axis (§6.3) reads cleanest of all seven yet does
+not drive the output — a read–drive dissociation traceable to a lexically-separable, user-directed
+probe set at an early layer. AUC therefore over-certifies: at least one of our seven axes is a topic
+detector rather than a behavioural handle, and read-vs-drive should be measured jointly (§10). (ii) Behavioural refusal is scored by a refusal-string detector — the field-standard
 convention for AdvBench, but imperfect — and stock refusal rates on AdvBench vary widely by model
 (0.03–0.57), so the *behavioural* headroom for abliteration differs across the ladder even though the
 refusal *direction* is cleanly identifiable everywhere (AUC $\ge 0.99$). (iii) Difference-of-means
@@ -476,6 +498,14 @@ baseline are model- and prompt-set-specific.
 
 ## 10. Future work
 
+**Read vs. drive (the immediate follow-up).** The fear dissociation (§6.3) motivates measuring, for
+every axis × layer × scale, **readability** (held-out AUC) against **drivability** (steering effect
+size on the *output*, not the meter), and selecting directions by the causal objective rather than by
+AUC. Axes in the high-read / low-drive corner are lexical detectors, not behavioural handles; the open
+questions are how many of the seven are impostors, whether corrected (model-directed, topic-matched,
+causally-selected) probes recover a drivable fear direction, and whether **drivability** rises with
+scale as **readability** does — a stronger claim than this paper's cleanliness ladder. This doubles as
+a general validity check for the linear-probe literature, which routinely reports AUC alone.
 **Scale.** Repeat the full experiment on Gemma-4-E4B (stock vs. abliterated twin) on a 24 GB GPU;
 the pipeline is model-agnostic and the driver is parameterized. **Controls.** The matched
 random-direction ablation (§7.5) establishes specificity; next is dose-response (varying strength /

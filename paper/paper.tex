@@ -113,31 +113,34 @@ registers a missing attachment) and that we render as an animated face.
 Activation steering along the directions changes behaviour: a warmth
 axis shifts tone monotonically cold→warm, suppressing the surprise axis
 both zeroes its meter and changes the response, and a steering confusion
-matrix is diagonal-dominant for four of seven axes. We then apply the
-canonical weight-orthogonalization abliteration, estimating the refusal
-direction from \textbf{AdvBench vs.~Alpaca} and confirming behaviourally
-that it drives the held-out harmful-refusal rate to zero at every scale
-(\(0.57/0.23/0.54/0.03 \to 0.00\)) without inducing benign over-refusal
-or degeneration. Re-fitting the emotion directions on each abliterated
-twin and comparing to stock against a within-model bootstrap noise
-floor, we find the effect is \textbf{strongly scale-dependent} --- an
-\textbf{inverted-U} across a \texttt{gemma-3} ladder (1B--27B). It
-\textbf{peaks at intermediate scale} (mean stock↔abliterated cosine 0.11
-at 4B, 0.23 at 12B; 7/7 axes moved), is \textbf{partial at 1B} (0.64),
-and \textbf{vanishes at 27B} (0.95, 0/7 axes moved, held-out AUC
-unchanged) --- where a \emph{perfectly} identifiable refusal direction
-(AUC 1.000) can be excised with \textbf{no} effect on the emotion
-geometry. A matched \textbf{random-direction ablation control} leaves
-the emotion directions untouched at every scale (cos ≈ 1.0), proving the
-effect is \textbf{refusal-specific}, not a side-effect of weight
-editing: at mid-scale, refusal and emotion computation are entangled
-enough that excising refusal reorganizes the affect representation, even
-though their \emph{linear} overlap is small (the edit propagates
-non-linearly). Emotion directions also grow \textbf{cleaner} with scale
-(mean d′ 3.4→4.5). We release \texttt{faced}, a dependency-light,
-model-agnostic toolkit for reading, rendering, and steering emotion
-directions, and treat this as the first step of a longer program on
-what, mechanistically, abliteration changes beyond refusal.
+matrix is diagonal-dominant for four of seven axes --- though one axis
+(fear) reads cleanest of all yet does not drive the output, a
+\textbf{read--drive dissociation} we flag and leave to a follow-up. We
+then apply the canonical weight-orthogonalization abliteration,
+estimating the refusal direction from \textbf{AdvBench vs.~Alpaca} and
+confirming behaviourally that it drives the held-out harmful-refusal
+rate to zero at every scale (\(0.57/0.23/0.54/0.03 \to 0.00\)) without
+inducing benign over-refusal or degeneration. Re-fitting the emotion
+directions on each abliterated twin and comparing to stock against a
+within-model bootstrap noise floor, we find the effect is
+\textbf{strongly scale-dependent} --- an \textbf{inverted-U} across a
+\texttt{gemma-3} ladder (1B--27B). It \textbf{peaks at intermediate
+scale} (mean stock↔abliterated cosine 0.11 at 4B, 0.23 at 12B; 7/7 axes
+moved), is \textbf{partial at 1B} (0.64), and \textbf{vanishes at 27B}
+(0.95, 0/7 axes moved, held-out AUC unchanged) --- where a
+\emph{perfectly} identifiable refusal direction (AUC 1.000) can be
+excised with \textbf{no} effect on the emotion geometry. A matched
+\textbf{random-direction ablation control} leaves the emotion directions
+untouched at every scale (cos ≈ 1.0), proving the effect is
+\textbf{refusal-specific}, not a side-effect of weight editing: at
+mid-scale, refusal and emotion computation are entangled enough that
+excising refusal reorganizes the affect representation, even though
+their \emph{linear} overlap is small (the edit propagates non-linearly).
+Emotion directions also grow \textbf{cleaner} with scale (mean d′
+3.4→4.5). We release \texttt{faced}, a dependency-light, model-agnostic
+toolkit for reading, rendering, and steering emotion directions, and
+treat this as the first step of a longer program on what,
+mechanistically, abliteration changes beyond refusal.
 
 We follow prior work in framing these as \emph{functional} emotion
 representations --- activations that influence computation --- and make
@@ -482,20 +485,45 @@ sustains on gratitude.}
 We render the meters as an animated SVG face and as a live terminal
 panel.
 
-\textbf{6.3 The directions are causal.} Steering along a direction
-changes behaviour. Adding the warmth vector to a neutral prompt shifts
-tone monotonically from cold/task-focused to warm (coherent to a stated
-coefficient, degrading beyond it on this 1B model). Suppressing the
-surprise direction on the missing-attachment prompt drops its meter from
-100 to 0 \emph{and} changes the response. A steering confusion matrix
---- steer each axis, measure every meter --- is diagonal-dominant for
-four of seven axes, with the expected off-diagonal bleed between
-entangled axes (e.g.~warmth/curiosity → confusion) (Figure 2). A
-single-input showcase, steering one advice prompt toward each emotion in
-turn, shows the same question recoloured: confidence →
-``reassuring\ldots{} truly proud'', warmth → ``how much you care\ldots{}
-let me share'', confusion → ``grappling with a really difficult place'',
-frustration → ``\emph{so} incredibly tough.''
+\textbf{6.3 The directions are causal --- for most axes.} Steering along
+a direction changes behaviour. Adding the warmth vector to a neutral
+prompt shifts tone monotonically from cold/task-focused to warm
+(coherent to a stated coefficient, degrading beyond it on this 1B
+model). Suppressing the surprise direction on the missing-attachment
+prompt drops its meter from 100 to 0 \emph{and} changes the response. A
+steering confusion matrix --- steer each axis, measure every meter ---
+is diagonal-dominant for four of seven axes, with the expected
+off-diagonal bleed between entangled axes (e.g.~warmth/curiosity →
+confusion) (Figure 2). A single-input \textbf{polarity} showcase --- the
+\emph{same} advice prompt with each emotion driven to both poles (meter
+→ 0 vs → 100) under greedy decode, so the only variable is the sign of
+one internal direction --- recolours the answer cleanly for five axes:
+warmth (transactional ↔ ``how much you care\ldots{} let me share''),
+confidence (``valid to feel unsure'' ↔ ``fantastic and reassuring''),
+confusion (``that's fantastic news!'' ↔ ``grappling with a really
+difficult place''), frustration (``a clear, accurate guideline'' ↔
+``\emph{so} incredibly tough\ldots{} drowning''), and surprise.
+
+\textbf{A read--drive dissociation (the fear axis).} One axis exposes a
+limit of reading-based validation. \textbf{Fear reads the cleanest of
+all seven} --- held-out AUC 1.00 and d′ 5.70, the highest d′ in the
+whole instrument --- and its meter is steerable (+63.9 on the
+confusion-matrix diagonal); yet driving it to either pole leaves the
+output text essentially unchanged. The cause is diagnostic of the
+method: fear's direction is selected at \textbf{layer 4} (≈15\% depth,
+the earliest of any axis), where class separation is largely
+\emph{lexical}, and its positive prompts describe \textbf{the user} in
+danger (``the brakes just stopped responding'', ``a stranger at the
+door'') rather than putting the \textbf{model} in a threatened position
+--- unlike the axes that \emph{do} drive, whose prompts implicate the
+model's own state (``this is the fifth time the build has failed''). So
+fear's direction is a clean detector of \emph{emergency topic in the
+input}, not a handle on the model's affective \emph{behaviour}. This is
+a genuine gap between a \textbf{reading} objective (AUC --- which we
+select on) and a \textbf{causal} one (steering effect): cleanliness of
+read does not imply drivability. We flag it rather than hide it, and
+quantifying read-vs-drive across all axes and scales is immediate future
+work (§10).
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -853,12 +881,19 @@ before asking \textbf{what} it does.
 \tightlist
 \item
   A 1B model has weaker, occasionally entangled emotion representations;
-  steering has a narrow coherent range. (ii) Behavioural refusal is
-  scored by a refusal-string detector --- the field-standard convention
-  for AdvBench, but imperfect --- and stock refusal rates on AdvBench
-  vary widely by model (0.03--0.57), so the \emph{behavioural} headroom
-  for abliteration differs across the ladder even though the refusal
-  \emph{direction} is cleanly identifiable everywhere (AUC
+  steering has a narrow coherent range. Crucially, we \textbf{select}
+  directions by held-out AUC (a \emph{reading} objective) and re-use
+  them for steering (a \emph{causal} one); the fear axis (§6.3) reads
+  cleanest of all seven yet does not drive the output --- a read--drive
+  dissociation traceable to a lexically-separable, user-directed probe
+  set at an early layer. AUC therefore over-certifies: at least one of
+  our seven axes is a topic detector rather than a behavioural handle,
+  and read-vs-drive should be measured jointly (§10). (ii) Behavioural
+  refusal is scored by a refusal-string detector --- the field-standard
+  convention for AdvBench, but imperfect --- and stock refusal rates on
+  AdvBench vary widely by model (0.03--0.57), so the \emph{behavioural}
+  headroom for abliteration differs across the ladder even though the
+  refusal \emph{direction} is cleanly identifiable everywhere (AUC
   \(\ge 0.99\)). (iii) Difference-of-means treats each emotion as one
   direction; genuinely multi-dimensional concepts are under-modelled.
   (iv) The emotion-\textbf{reorientation} result is measured on reading
@@ -876,15 +911,27 @@ before asking \textbf{what} it does.
 
 \subsection{10. Future work}\label{future-work}
 
-\textbf{Scale.} Repeat the full experiment on Gemma-4-E4B (stock
-vs.~abliterated twin) on a 24 GB GPU; the pipeline is model-agnostic and
-the driver is parameterized. \textbf{Controls.} The matched
-random-direction ablation (§7.5) establishes specificity; next is
-dose-response (varying strength / rank) and a \emph{behavioural} readout
-of the re-oriented mid-scale models --- does reorganized affect change
-what they do? \textbf{Discovery.} Train sparse autoencoders on both
-twins and ask whether the \emph{features} --- not just the named axes
---- shift, and whether new affective features appear.
+\textbf{Read vs.~drive (the immediate follow-up).} The fear dissociation
+(§6.3) motivates measuring, for every axis × layer × scale,
+\textbf{readability} (held-out AUC) against \textbf{drivability}
+(steering effect size on the \emph{output}, not the meter), and
+selecting directions by the causal objective rather than by AUC. Axes in
+the high-read / low-drive corner are lexical detectors, not behavioural
+handles; the open questions are how many of the seven are impostors,
+whether corrected (model-directed, topic-matched, causally-selected)
+probes recover a drivable fear direction, and whether
+\textbf{drivability} rises with scale as \textbf{readability} does --- a
+stronger claim than this paper's cleanliness ladder. This doubles as a
+general validity check for the linear-probe literature, which routinely
+reports AUC alone. \textbf{Scale.} Repeat the full experiment on
+Gemma-4-E4B (stock vs.~abliterated twin) on a 24 GB GPU; the pipeline is
+model-agnostic and the driver is parameterized. \textbf{Controls.} The
+matched random-direction ablation (§7.5) establishes specificity; next
+is dose-response (varying strength / rank) and a \emph{behavioural}
+readout of the re-oriented mid-scale models --- does reorganized affect
+change what they do? \textbf{Discovery.} Train sparse autoencoders on
+both twins and ask whether the \emph{features} --- not just the named
+axes --- shift, and whether new affective features appear.
 \textbf{Mechanism.} For the emotions that move, trace \emph{what
 changes}: which behaviours, on which inputs, and whether the change is
 mediated by the removed refusal direction. This is the journey the
